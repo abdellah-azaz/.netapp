@@ -1,0 +1,347 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MonAppMultiplateforme.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="using:MonAppMultiplateforme.Converters"
+        xmlns:models="using:MonAppMultiplateforme.Models"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        x:Class="MonAppMultiplateforme.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="MonAppMultiplateforme">
+    
+    <Window.Resources>
+        <StreamGeometry x:Key="IconHome">M12,5.69L17,10.19V18H15V12H9V18H7V10.19L12,5.69M12,3L2,12H5V20H11V14H13V20H19V12H22L12,3Z</StreamGeometry>
+        <StreamGeometry x:Key="IconPassword">M12,17A2,2 0 0,0 14,15C14,13.89 13.11,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M9,6A3,3 0 0,1 12,3A3,3 0 0,1 15,6V8H9V6Z</StreamGeometry>
+        <StreamGeometry x:Key="IconAntivirus">M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z</StreamGeometry>
+        <StreamGeometry x:Key="IconBoot">M13,2V11H20L11,22V13H4L13,2Z</StreamGeometry>
+        <StreamGeometry x:Key="IconProfile">M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z</StreamGeometry>
+        <StreamGeometry x:Key="IconSettings">M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.35 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.97 19.05,5.05L16.56,6.05C16.04,5.65 15.48,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.52,5.32 7.96,5.65 7.44,6.05L4.95,5.05C4.73,4.97 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.35 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.35 8.52,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.48,18.68 16.04,18.35 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z</StreamGeometry>
+        <StreamGeometry x:Key="IconSupport">M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z</StreamGeometry>
+        <StreamGeometry x:Key="IconMembers">M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15.22 17,16.5V19H22V16.5C22,14.58 18.59,13.41 16,13M8,13C5.41,13 2,14.58 2,16.5V19H14V16.5C14,14.58 10.59,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z</StreamGeometry>
+    </Window.Resources>
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Window.Styles>
+        <Style Selector="Button.nav">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="Margin" Value="0,2"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.nav:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#34495e"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="250,*">
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#2c3e50" Padding="10">
+            <DockPanel>
+                <!-- Top Section: Logo + Main Nav -->
+                <StackPanel DockPanel.Dock="Top" Spacing="5">
+                    <Border Background="White" Width="60" Height="60" CornerRadius="30" Margin="0,10,0,25" HorizontalAlignment="Center" BoxShadow="0 4 8 0 #40000000" ClipToBounds="True">
+                        <Image Source="/Assets/logo.png" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Accueil" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconHome}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Accueil" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Password Manager" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconPassword}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Password Manager" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Antivirus" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconAntivirus}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Antivirus" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Boot" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconBoot}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Boot" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Members" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconMembers}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Membres" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Bottom Section: User / Settings -->
+                <StackPanel DockPanel.Dock="Bottom" Spacing="5" VerticalAlignment="Bottom">
+                    <Rectangle Height="1" Fill="White" Opacity="0.2" Margin="5,0,5,10"/>
+                    
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Profil" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconProfile}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Profil" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Réglages" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconSettings}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Réglages" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Contact Support" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="{StaticResource IconSupport}" Width="18" Height="18" Foreground="White"/>
+                            <TextBlock Text="Contact Support" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Content Area -->
+        <Grid Grid.Column="1" Margin="20">
+            <!-- Accueil -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Accueil'}">
+                <TextBlock Text="Page d'Accueil" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Bienvenue sur votre application multiplateforme. C'est ici que commence votre expérience." TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Password Manager (Existing UI) -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Password Manager'}" Spacing="15">
+                <TextBlock Text="Gestionnaire de mots de passe" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                
+                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,0,0,10">
+                    <!-- Saisir mot de passe -->
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Spacing="5" Margin="0,0,0,10">
+                        <TextBlock Text="Saisir votre mot de passe :" FontWeight="Bold"/>
+                        <TextBox PasswordChar="*" 
+                                 Text="{Binding Password}" 
+                                 Watermark="Mot de passe" />
+                    </StackPanel>
+
+                    <!-- Mot de passe chiffré -->
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Spacing="5" Margin="0,0,0,10">
+                        <TextBlock Text="Mot de passe chiffré :" FontWeight="Bold"/>
+                        <TextBox Text="{Binding EncryptedPassword}" 
+                                 Watermark="Le mot de passe chiffré apparaîtra ici" 
+                                 IsReadOnly="True"
+                                 Background="#f8f9fa"/>
+                    </StackPanel>
+
+                    <!-- Boutons Actions Rapides -->
+                    <UniformGrid Grid.Row="2" Grid.ColumnSpan="2" Columns="2" Margin="0,10,0,0">
+                        <Button Content="Générer" 
+                                Command="{Binding GeneratePasswordCommand}" 
+                                HorizontalAlignment="Stretch" 
+                                HorizontalContentAlignment="Center"
+                                Margin="0,0,5,0" />
+                        <Button Content="Valider" 
+                                Command="{Binding ValidatePasswordCommand}" 
+                                HorizontalAlignment="Stretch" 
+                                HorizontalContentAlignment="Center"
+                                Margin="5,0,0,0" />
+                    </UniformGrid>
+                </Grid>
+
+                <TextBlock Text="{Binding StatusMessage}" 
+                           TextWrapping="Wrap" 
+                           HorizontalAlignment="Center" 
+                           Foreground="Gray"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <!-- Antivirus -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Antivirus'}">
+                <TextBlock Text="Antivirus" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Votre système est actuellement protégé. Lancez un scan pour vérifier l'intégrité de vos fichiers." TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Boot -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Boot'}">
+                <TextBlock Text="Configuration du Boot" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Gérez les options de démarrage de votre système de manière sécurisée et efficace." TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Members -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Members'}" Spacing="15">
+                <DockPanel>
+                    <TextBlock Text="Gestion des Membres" FontSize="24" FontWeight="Bold" DockPanel.Dock="Left"/>
+                    <StackPanel Orientation="Horizontal" Spacing="10" DockPanel.Dock="Right">
+                        <TextBox Width="250" Watermark="Rechercher un membre..." Text="{Binding SearchText, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        <Button Command="{Binding ToggleAddMemberFormCommand}" 
+                                Background="Transparent" 
+                                Padding="5">
+                            <PathIcon Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="24" Height="24" Foreground="#3498db"/>
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+
+                <TextBlock Text="Consultez et gérez la liste des membres inscrits dans le système." 
+                           TextWrapping="Wrap" 
+                           IsVisible="{Binding !IsAddingMember}"/>
+
+                <!-- Formulaire d'ajout/modification de membre -->
+                <Border Background="#fdfdfd" BorderBrush="#ecf0f1" BorderThickness="1" CornerRadius="8" Padding="15" IsVisible="{Binding IsAddingMember}">
+                    <StackPanel Spacing="10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Modifier le membre" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Text="Ajouter un nouveau membre" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNull}}"/>
+                        </StackPanel>
+                        
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Nom Complet :"/>
+                            <TextBox Text="{Binding MemberFullName}" Watermark="Ex: Abdellah" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Email :"/>
+                            <TextBox Text="{Binding MemberEmail}" Watermark="Ex: abdellah@example.com" />
+                        </StackPanel>
+
+                        <UniformGrid Columns="2" Margin="0,10,0,0">
+                            <Button Content="Annuler" 
+                                    Command="{Binding ToggleAddMemberFormCommand}" 
+                                    HorizontalAlignment="Stretch" 
+                                    HorizontalContentAlignment="Center"
+                                    Margin="0,0,5,0" />
+                            <Button Command="{Binding SaveMemberCommand}" 
+                                    HorizontalAlignment="Stretch" 
+                                    HorizontalContentAlignment="Center"
+                                    Classes="accent"
+                                    Margin="5,0,0,0">
+                                <Panel>
+                                    <TextBlock Text="Mettre à jour" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                                    <TextBlock Text="Ajouter" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNull}}"/>
+                                </Panel>
+                            </Button>
+                        </UniformGrid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Liste des membres -->
+                <DataGrid ItemsSource="{Binding MembersList}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          GridLinesVisibility="All"
+                          BorderThickness="1"
+                          BorderBrush="#ecf0f1"
+                          Height="400"
+                          IsVisible="{Binding !IsAddingMember}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nom Complet" Binding="{Binding Fullname}" Width="*" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Mail}" Width="*" />
+                        <DataGridTemplateColumn Header="Actions" Width="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate DataType="models:Member">
+                                    <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
+                                        <Button Content="Modifier" 
+                                                Command="{Binding $parent[DataGrid].((vm:MainWindowViewModel)DataContext).UpdateMemberCommand}"
+                                                CommandParameter="{Binding}"
+                                                Padding="10,5"
+                                                FontSize="12"/>
+                                        <Button Content="Supprimer" 
+                                                Command="{Binding $parent[DataGrid].((vm:MainWindowViewModel)DataContext).DeleteMemberCommand}"
+                                                CommandParameter="{Binding}"
+                                                Background="#e74c3c"
+                                                Foreground="White"
+                                                Padding="10,5"
+                                                FontSize="12"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Text="{Binding StatusMessage}" 
+                           TextWrapping="Wrap" 
+                           HorizontalAlignment="Center" 
+                           Foreground="Gray"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <!-- Profil -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Profil'}">
+                <TextBlock Text="Mon Profil" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Consultez et modifiez vos informations personnelles ici." TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Réglages -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Réglages'}">
+                <TextBlock Text="Réglages" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Personnalisez le comportement de l'application selon vos préférences." TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Contact Support -->
+            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Contact Support'}">
+                <TextBlock Text="Contact Support" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Une question ? Un problème ? Notre équipe technique est à votre disposition." TextWrapping="Wrap"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Overlay Layer for Popups -->
+        <Panel Grid.ColumnSpan="2" IsVisible="{Binding IsSharePopupVisible}" Background="#40000000">
+            <Border Background="White" CornerRadius="12" Padding="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" BoxShadow="0 8 24 0 #40000000">
+                <StackPanel Spacing="20">
+                    <TextBlock Text="Partage de mot de passe" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Voulez-vous partager ce mot de passe avec des membres ?" TextAlignment="Center" TextWrapping="Wrap"/>
+                    <UniformGrid Columns="2" Margin="0,10,0,0">
+                        <Button Content="Non" Command="{Binding NoShareCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
+                        <Button Content="Oui" Command="{Binding YesShareCommand}" Classes="accent" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,0,0,0"/>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </Panel>
+
+        <Panel Grid.ColumnSpan="2" IsVisible="{Binding IsMemberSelectionVisible}" Background="#40000000">
+            <Border Background="White" CornerRadius="12" Padding="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500" MaxHeight="600" BoxShadow="0 8 24 0 #40000000">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="Sélectionner les membres" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+                    <StackPanel DockPanel.Dock="Bottom" Spacing="10" Margin="0,15,0,0">
+                        <UniformGrid Columns="2">
+                            <Button Content="Annuler" Command="{Binding CancelSharingCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
+                            <Button Content="Partager" Command="{Binding SendSharingCommand}" Classes="accent" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,0,0,0"/>
+                        </UniformGrid>
+                    </StackPanel>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding MemberSelectionList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="models:MemberSelection">
+                                    <CheckBox IsChecked="{Binding IsSelected}" Margin="0,5">
+                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                            <TextBlock Text="{Binding Member.Fullname}" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Member.Mail}" Foreground="Gray" FontSize="12" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+        </Panel>
+    </Grid>
+</Window>

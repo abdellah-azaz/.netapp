@@ -1,0 +1,43 @@
+## [Visual Studio]
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## [Visual Studio Code]
+.vscode/
+
+## [Build Results]
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## [User-specific files]
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## [Dotnet Settings]
+.dotnet/
+.templateengine/
+
+## [Avalonia Specific]
+*.axaml.g.cs
+GeneratedFiles/
+
+## [OS specific]
+.DS_Store
+Thumbs.db
