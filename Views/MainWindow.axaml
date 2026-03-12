@@ -173,17 +173,499 @@
                            Margin="0,10,0,0"/>
             </StackPanel>
 
-            <!-- Antivirus -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Antivirus'}">
-                <TextBlock Text="Antivirus" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Votre système est actuellement protégé. Lancez un scan pour vérifier l'intégrité de vos fichiers." TextWrapping="Wrap"/>
-            </StackPanel>
+            <!-- Antivirus (Full Redesign matching AV-Shield) -->
+            <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Antivirus'}" RowDefinitions="Auto,*">
+                <Border Grid.Row="0" Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,20" BoxShadow="0 4 12 0 #15000000">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="AV-Shield Protection" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
+                            <TextBlock Text="Moteur de scan hybride (Signatures, SHA256, Heuristique, Entropie)" Foreground="#7f8c8d" FontSize="14"/>
+                        </StackPanel>
+                        <Button Grid.Column="1" VerticalAlignment="Center" Classes="nav" Command="{Binding RefreshAVDataCommand}" Padding="10">
+                            <PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Width="22" Height="22" Foreground="#3498db"/>
+                        </Button>
+                    </Grid>
+                </Border>
 
-            <!-- Boot -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Boot'}">
-                <TextBlock Text="Configuration du Boot" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Gérez les options de démarrage de votre système de manière sécurisée et efficace." TextWrapping="Wrap"/>
-            </StackPanel>
+                <TabControl Grid.Row="1" Classes="dashboard">
+                    <TabControl.Styles>
+                        <Style Selector="TabItem">
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Padding" Value="20,10"/>
+                        </Style>
+                    </TabControl.Styles>
+
+                    <!-- Tab: Dashboard -->
+                    <TabItem Header="Tableau de bord">
+                        <ScrollViewer Margin="0,15,0,0">
+                            <StackPanel Spacing="20">
+                                <Border Background="#f8fafc" BorderBrush="#e2e8f0" BorderThickness="1" CornerRadius="8" Padding="20">
+                                    <StackPanel Spacing="10">
+                                        <TextBlock Text="Statistiques Globales" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{Binding AvStatsText}" FontFamily="Consolas, monospace" FontSize="12" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Tab: Scan Rapide -->
+                    <TabItem Header="Lancer un Scan">
+                        <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
+                            <StackPanel Grid.Row="0" Spacing="15" Margin="0,0,0,20">
+                                <TextBlock Text="Entrez le chemin à analyser :" FontWeight="SemiBold"/>
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBox Text="{Binding ScanTargetPath}" Watermark="Ex: /home/user/documents ou C:\MonDossier" Margin="0,0,10,0"/>
+                                    <Button Grid.Column="1" Content="Scanner" Command="{Binding RunAVScanCommand}" IsEnabled="{Binding !IsAVScanning}" Classes="accent" Padding="25,10"/>
+                                </Grid>
+                                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsAVScanning}" Height="4" Foreground="#3498db"/>
+                            </StackPanel>
+
+                            <ScrollViewer Grid.Row="1" IsVisible="{Binding LastAVScanResult, Converter={x:Static ObjectConverters.IsNotNull}}">
+                                <StackPanel Spacing="15">
+                                    <Border Background="#f0fdf4" CornerRadius="8" Padding="15" IsVisible="{Binding LastAVScanResult.Statistics.MalwareFiles, Converter={StaticResource StringEqualsConverter}, ConverterParameter='0'}">
+                                        <TextBlock Text="Aucun malware détecté lors du dernier scan." Foreground="#166534" FontWeight="Bold"/>
+                                    </Border>
+                                    <Border Background="#fef2f2" CornerRadius="8" Padding="15" IsVisible="{Binding LastAVScanResult.Statistics.MalwareFiles, Converter={StaticResource StringEqualsConverter}, ConverterParameter='0', Converter={StaticResource BooleanToBrushConverter}, ConverterParameter='False'}">
+                                         <StackPanel Orientation="Horizontal" Spacing="10">
+                                             <PathIcon Data="M13,14H11V9H13M13,18H11V16H13M1,21H23L12,2L1,21Z" Foreground="#991b1b" Width="20" Height="20"/>
+                                             <TextBlock Text="{Binding LastAVScanResult.Statistics.MalwareFiles, StringFormat='\{0\} menaces détectées !'}" Foreground="#991b1b" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                                         </StackPanel>
+                                    </Border>
+
+                                    <DataGrid ItemsSource="{Binding LastAVScanResult.Files}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All" BorderThickness="1" BorderBrush="#eee">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Fichier" Binding="{Binding Filename}" Width="200" />
+                                            <DataGridTemplateColumn Header="Résultat" Width="120">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate DataType="models:AVFileReport">
+                                                        <TextBlock Text="{Binding Result}" 
+                                                                 Foreground="{Binding Result, Converter={StaticResource StringEqualsConverter}, ConverterParameter='MALWARE', Converter={StaticResource BooleanToBrushConverter}}" 
+                                                                 FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn Header="Menace" Binding="{Binding Threat}" Width="*" />
+                                            <DataGridTextColumn Header="Score" Binding="{Binding HeuristicScore}" Width="80" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- Tab: Quarantaine -->
+                    <TabItem Header="Quarantaine">
+                        <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
+                            <TextBlock Grid.Row="0" Text="Fichiers isolés par précaution" FontWeight="Bold" Margin="0,0,0,15"/>
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding AvQuarantine}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Fichier Original" Binding="{Binding OriginalPath}" Width="*" />
+                                    <DataGridTextColumn Header="Menace" Binding="{Binding ThreatName}" Width="150" />
+                                    <DataGridTextColumn Header="Date" Binding="{Binding QuarantineDate}" Width="150" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- Tab: Historique -->
+                    <TabItem Header="Historique">
+                        <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
+                            <TextBlock Grid.Row="0" Text="Derniers scans effectués" FontWeight="Bold" Margin="0,0,0,15"/>
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding AvHistory}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Date" Binding="{Binding ScanDate}" Width="150" />
+                                    <DataGridTextColumn Header="Cible" Binding="{Binding TargetPath}" Width="*" />
+                                    <DataGridTextColumn Header="Total" Binding="{Binding TotalFiles}" Width="70" />
+                                    <DataGridTextColumn Header="Menaces" Binding="{Binding MalwareFiles}" Width="80" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+
+            <!-- Boot / Security Scanner (Full Result Expansion) -->
+            <!-- Boot / Security Scanner (Full Redesign) -->
+            <ScrollViewer IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Boot'}">
+                <StackPanel Spacing="20" Margin="0,0,15,0">
+                    <!-- Header with Action and Summary -->
+                <Border Background="White" CornerRadius="12" Padding="20" BoxShadow="0 4 12 0 #15000000">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Audit de Sécurité Intelligent" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
+                            <TextBlock Text="Analysez l'intégrité et les vulnérabilités de votre système en temps réel." Foreground="#7f8c8d" FontSize="14"/>
+                            
+                            <StackPanel Orientation="Horizontal" Spacing="15" Margin="0,15,0,0">
+                                <Button Content="Lancer un Nouvel Audit" 
+                                        Command="{Binding RunScanCommand}" 
+                                        IsEnabled="{Binding !IsScanning}"
+                                        Background="#3498db" Foreground="White" Padding="25,12" CornerRadius="8" FontWeight="Bold">
+                                    <Button.Transitions>
+                                        <Transitions>
+                                            <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"/>
+                                        </Transitions>
+                                    </Button.Transitions>
+                                </Button>
+                                
+                                <StackPanel VerticalAlignment="Center" IsVisible="{Binding StructuredScanResult, Converter={x:Static ObjectConverters.IsNotNull}}">
+                                    <TextBlock Text="{Binding StructuredScanResult.DateScan, StringFormat='Dernier audit : \{0\}'}" FontSize="11" Foreground="#95a5a6"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Risk Summary Badges -->
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="10">
+                            <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto" HorizontalAlignment="Right">
+                                <!-- Critical -->
+                                <Border Grid.Row="0" Grid.Column="0" Background="#fee2e2" BorderBrush="#ef4444" BorderThickness="1" CornerRadius="6" Padding="12,8" Margin="0,0,8,8" MinWidth="100">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding CriticalRiskCount}" FontSize="20" FontWeight="Heavy" Foreground="#ef4444" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="CRITIQUE" FontSize="9" FontWeight="Bold" Foreground="#ef4444" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- High -->
+                                <Border Grid.Row="0" Grid.Column="1" Background="#ffedd5" BorderBrush="#f97316" BorderThickness="1" CornerRadius="6" Padding="12,8" Margin="0,0,0,8" MinWidth="100">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding HighRiskCount}" FontSize="20" FontWeight="Heavy" Foreground="#f97316" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="ÉLEVÉ" FontSize="9" FontWeight="Bold" Foreground="#f97316" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Medium -->
+                                <Border Grid.Row="1" Grid.Column="0" Background="#fef9c3" BorderBrush="#eab308" BorderThickness="1" CornerRadius="6" Padding="12,8" Margin="0,0,8,0" MinWidth="100">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding MediumRiskCount}" FontSize="20" FontWeight="Heavy" Foreground="#854d0e" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="MOYEN" FontSize="9" FontWeight="Bold" Foreground="#854d0e" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Score -->
+                                <Border Grid.Row="1" Grid.Column="1" Background="#f0fdf4" BorderBrush="#22c55e" BorderThickness="1" CornerRadius="6" Padding="12,8" MinWidth="100">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding SecurityScore, StringFormat='\{0\}%'}" FontSize="20" FontWeight="Heavy" Foreground="#166534" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="SCORE SÉCU" FontSize="9" FontWeight="Bold" Foreground="#166534" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsScanning}" Height="4" Margin="0,-15,0,0" CornerRadius="2" Foreground="#3498db" Background="#ecf0f1"/>
+
+                <TabControl IsVisible="{Binding StructuredScanResult, Converter={x:Static ObjectConverters.IsNotNull}}" MinHeight="600" Classes="dashboard">
+                    <TabControl.Styles>
+                        <Style Selector="TabItem">
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Padding" Value="20,10"/>
+                        </Style>
+                    </TabControl.Styles>
+
+                    <!-- Tab: Risques & Recommandations -->
+                    <TabItem Header="Vulnérabilités">
+                        <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
+                            <TextBlock Grid.Row="0" Text="Points d'attention détectés" FontWeight="Bold" Margin="0,0,0,15" Foreground="#34495e"/>
+                            <ScrollViewer Grid.Row="1">
+                                <ItemsControl ItemsSource="{Binding StructuredScanResult.Risques}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="models:ScanRisk">
+                                            <Border Margin="0,0,0,12" Background="White" BorderBrush="{Binding Color}" BorderThickness="5,1,1,1" CornerRadius="8" Padding="15" BoxShadow="0 2 6 0 #10000000">
+                                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                                    <Border Width="40" Height="40" Background="{Binding Color}" Opacity="0.1" CornerRadius="20" Margin="0,0,15,0">
+                                                        <PathIcon Data="{Binding Icon}" Foreground="{Binding Color}" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                                            <TextBlock Text="{Binding Niveau}" FontWeight="Heavy" FontSize="11" Foreground="{Binding Color}"/>
+                                                            <TextBlock Text="•" Foreground="#bdc3c7"/>
+                                                            <TextBlock Text="Alerte Système" FontSize="11" Foreground="#7f8c8d"/>
+                                                        </StackPanel>
+                                                        <TextBlock Text="{Binding Message}" FontSize="15" FontWeight="Medium" Foreground="#2c3e50" TextWrapping="Wrap"/>
+                                                    </StackPanel>
+                                                    <Button Grid.Column="2" Content="Recommander" Classes="outline" Padding="12,6" FontSize="11" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- Tab: Système & Identité -->
+                    <TabItem Header="Identité &amp; Système">
+                        <ScrollViewer Margin="0,15,0,0">
+                            <StackPanel Spacing="20">
+                                <!-- OS & Machine Infos -->
+                                <Grid ColumnDefinitions="*,*">
+                                    <Border Grid.Column="0" Margin="0,0,10,0" Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                        <StackPanel Spacing="12">
+                                            <TextBlock Text="Configuration Matérielle" FontWeight="Bold" FontSize="16" Foreground="#2c3e50" Margin="0,0,0,5"/>
+                                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                                                <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,10">
+                                                    <TextBlock Text="Nom d'hôte" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Systeme.Hostname}" FontWeight="Bold"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,0,10">
+                                                    <TextBlock Text="Architecture" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Systeme.Architecture}" FontWeight="Bold"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,10">
+                                                    <TextBlock Text="Processeur" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Systeme.CpuCores, StringFormat='\{0\} Coeurs'}" FontWeight="Bold"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,10">
+                                                    <TextBlock Text="Mémoire RAM" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Systeme.RamGb, StringFormat='\{0\} GB'}" FontWeight="Bold"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+                                                    <TextBlock Text="Système d'Exploitation" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Systeme.DisplayOS}" FontWeight="Bold" Foreground="#3498db"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                    
+                                    <Border Grid.Column="1" Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                        <StackPanel Spacing="12">
+                                            <TextBlock Text="Privilèges &amp; Utilisateurs" FontWeight="Bold" FontSize="16" Foreground="#2c3e50" Margin="0,0,0,5"/>
+                                            <WrapPanel>
+                                                <Border Background="#f0f9ff" Padding="12,8" CornerRadius="8" Margin="0,0,10,10">
+                                                    <StackPanel>
+                                                        <TextBlock Text="Session" FontSize="10" Foreground="#0369a1"/>
+                                                        <TextBlock Text="{Binding StructuredScanResult.Systeme.Username}" FontWeight="Bold"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Background="#f0fdf4" Padding="12,8" CornerRadius="8" Margin="0,0,10,10" IsVisible="{Binding StructuredScanResult.Systeme.EstAdmin}">
+                                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                                        <PathIcon Data="M12,12L14.34,14.34L11,17.68L7.66,14.34L10,12V8H14V12H12Z" Width="14" Height="14" Foreground="#166534"/>
+                                                        <TextBlock Text="ADMIN / ROOT" FontSize="10" FontWeight="Bold" Foreground="#166534" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Background="#fff1f2" Padding="12,8" CornerRadius="8" Margin="0,0,10,10" IsVisible="{Binding !StructuredScanResult.Systeme.EstAdmin}">
+                                                    <TextBlock Text="UTILISATEUR STANDARD" FontSize="10" FontWeight="Bold" Foreground="#991b1b"/>
+                                                </Border>
+                                            </WrapPanel>
+                                            
+                                            <TextBlock Text="Administrateurs système" FontSize="12" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                            <ItemsControl ItemsSource="{Binding StructuredScanResult.Comptes.Administrateurs}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate><TextBlock Text="{Binding}" FontSize="13" Foreground="#34495e" Margin="0,2"/></DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+
+                                <Border Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                    <StackPanel Spacing="10">
+                                        <TextBlock Text="Comptes Utilisateurs Détectés" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                        <ItemsControl ItemsSource="{Binding StructuredScanResult.Comptes.Utilisateurs}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate DataType="models:UserAccount">
+                                                    <Grid ColumnDefinitions="*,Auto,Auto" Margin="0,2">
+                                                        <TextBlock Text="{Binding Nom}" FontWeight="Medium"/>
+                                                        <Border Grid.Column="1" Background="#ecfdf5" CornerRadius="4" Padding="6,2" Margin="10,0" IsVisible="{Binding Actif}">
+                                                            <TextBlock Text="Actif" Foreground="#059669" FontSize="11" FontWeight="Bold"/>
+                                                        </Border>
+                                                        <Border Grid.Column="1" Background="#fef2f2" CornerRadius="4" Padding="6,2" Margin="10,0" IsVisible="{Binding !Actif}">
+                                                            <TextBlock Text="Désactivé" Foreground="#dc2626" FontSize="11" FontWeight="Bold"/>
+                                                        </Border>
+                                                        <TextBlock Grid.Column="2" Text="Mdp Permanent" Foreground="#d97706" FontSize="11" IsVisible="{Binding MdpExpireJamais}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Tab: Réseau & Exposition -->
+                    <TabItem Header="Infrastructure Réseau">
+                        <ScrollViewer Margin="0,15,0,0">
+                            <StackPanel Spacing="20">
+                                <!-- External & IP Info -->
+                                <Border Background="#1e293b" CornerRadius="12" Padding="25">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <StackPanel Spacing="5">
+                                            <TextBlock Text="EXPOSITION EXTERNE" FontSize="10" FontWeight="Black" Foreground="#94a3b8"/>
+                                            <TextBlock Text="{Binding StructuredScanResult.PortsExternes.IpPublique}" FontSize="28" FontWeight="Heavy" Foreground="White" Margin="0,5"/>
+                                            <TextBlock Text="Adresse IP Publique (Passerelle)" Foreground="#64748b" FontSize="12"/>
+                                        </StackPanel>
+                                        <Border Grid.Column="1" Background="#334155" CornerRadius="10" Padding="20,10" VerticalAlignment="Center">
+                                            <StackPanel Spacing="2">
+                                                <TextBlock Text="{Binding StructuredScanResult.PortsExternes.NombreExposes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                                                <TextBlock Text="Ports Exposés" FontSize="9" Foreground="#94a3b8" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+
+                                <Grid ColumnDefinitions="*,*">
+                                    <!-- Services Réseau -->
+                                    <Border Grid.Column="0" Margin="0,0,10,0" Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                        <StackPanel Spacing="15">
+                                            <TextBlock Text="Services Critiques" FontWeight="Bold" FontSize="16"/>
+                                            
+                                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                                <StackPanel Grid.Row="0" Grid.Column="0" Spacing="5" Margin="0,0,0,15">
+                                                    <TextBlock Text="SMB v1" FontSize="11" Foreground="#95a5a6"/>
+                                                    <Border Background="{Binding StructuredScanResult.Reseau.Smb1, Converter={StaticResource StringEqualsConverter}, ConverterParameter='True', Converter={StaticResource BooleanToBrushConverter}}" CornerRadius="4" Padding="8,4" HorizontalAlignment="Left">
+                                                        <TextBlock Text="{Binding StructuredScanResult.Reseau.Smb1}" FontSize="12" FontWeight="Bold"/>
+                                                    </Border>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="0" Grid.Column="1" Spacing="5">
+                                                    <TextBlock Text="RDP (Accès Distant)" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Reseau.Rdp}" FontWeight="Bold"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="1" Grid.Column="0" Spacing="5">
+                                                    <TextBlock Text="Système de fichiers" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="Samba / Partage Actif" IsVisible="{Binding StructuredScanResult.Reseau.SambaActive}" FontWeight="SemiBold" Foreground="#27ae60"/>
+                                                    <TextBlock Text="Standard" IsVisible="{Binding !StructuredScanResult.Reseau.SambaActive}" Foreground="#7f8c8d"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="1" Grid.Column="1" Spacing="5">
+                                                    <TextBlock Text="État Pare-feu" FontSize="11" Foreground="#95a5a6"/>
+                                                    <TextBlock Text="{Binding StructuredScanResult.Reseau.UfwStatus}" FontWeight="Bold" Foreground="#2980b9"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Ports Exposés -->
+                                    <Border Grid.Column="1" Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                        <StackPanel Spacing="10">
+                                            <TextBlock Text="Ports Détectés (DMZ/Internet)" FontWeight="Bold" FontSize="16" Margin="0,0,0,5"/>
+                                            <ItemsControl ItemsSource="{Binding StructuredScanResult.Reseau.PortsOuverts}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate DataType="models:ExposedPort">
+                                                        <Border Margin="0,0,0,5" Background="#f8fafc" BorderBrush="#e2e8f0" BorderThickness="1" CornerRadius="6" Padding="10,6">
+                                                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                                                <TextBlock Text="{Binding Port}" FontWeight="Bold" Width="50"/>
+                                                                <TextBlock Grid.Column="1" Text="{Binding Service}" Foreground="#475569"/>
+                                                                <Border Grid.Column="2" Background="#fff1f2" CornerRadius="4" Padding="5,2" IsVisible="{Binding Risque, Converter={StaticResource StringEqualsConverter}, ConverterParameter='CRITIQUE'}">
+                                                                    <TextBlock Text="DANGEREUX" Foreground="#e11d48" FontSize="9" FontWeight="Bold"/>
+                                                                </Border>
+                                                            </Grid>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Tab: Protection & Logs -->
+                    <TabItem Header="Défense &amp; Activité">
+                         <ScrollViewer Margin="0,15,0,0">
+                            <StackPanel Spacing="20">
+                                <Grid ColumnDefinitions="*,*">
+                                    <Border Grid.Column="0" Margin="0,0,10,0" Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                        <StackPanel Spacing="15">
+                                            <TextBlock Text="Protection Active" FontWeight="Bold" FontSize="16"/>
+                                            
+                                            <StackPanel Spacing="10">
+                                                <Border Background="#f0fdf4" Padding="15,10" CornerRadius="8" IsVisible="{Binding StructuredScanResult.Securite.Defender.AntivirusActif}">
+                                                    <Grid ColumnDefinitions="Auto,*">
+                                                        <PathIcon Data="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" Width="20" Height="20" Foreground="#16a34a" Margin="0,0,15,0"/>
+                                                        <StackPanel Grid.Column="1">
+                                                            <TextBlock Text="Antivirus" FontSize="12" FontWeight="Bold" Foreground="#166534"/>
+                                                            <TextBlock Text="Actif et fonctionnel" FontSize="11" Foreground="#15803d"/>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Border>
+
+                                                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,10">
+                                                        <TextBlock Text="Signatures" FontSize="11" Foreground="#95a5a6"/>
+                                                        <TextBlock Text="{Binding StructuredScanResult.Securite.Defender.AgeSignatures, StringFormat='\{0\} jours'}" FontWeight="Bold"/>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Row="0" Grid.Column="1">
+                                                        <TextBlock Text="AppArmor/SELinux" FontSize="11" Foreground="#95a5a6"/>
+                                                        <TextBlock Text="{Binding StructuredScanResult.Securite.AppArmor}" FontWeight="Bold"/>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Row="1" Grid.Column="0">
+                                                        <TextBlock Text="Mise à jour" FontSize="11" Foreground="#95a5a6"/>
+                                                        <TextBlock Text="Auto" IsVisible="{Binding StructuredScanResult.Securite.WinUpdate}" Foreground="#27ae60" FontWeight="Bold"/>
+                                                        <TextBlock Text="Désactivé" IsVisible="{Binding !StructuredScanResult.Securite.WinUpdate}" Foreground="#e74c3c" FontWeight="Bold"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <Border Grid.Column="1" Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                        <StackPanel Spacing="15">
+                                            <TextBlock Text="Activité des Logs" FontWeight="Bold" FontSize="16"/>
+                                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                                <Border Grid.Row="0" Grid.Column="0" Background="#fff1f2" CornerRadius="8" Padding="15" Margin="0,0,5,5">
+                                                    <StackPanel>
+                                                        <TextBlock Text="Echecs Login" FontSize="10" Foreground="#e11d48"/>
+                                                        <TextBlock Text="{Binding StructuredScanResult.Logs.EchecsConnexion}" FontSize="22" FontWeight="Heavy" Foreground="#be123c"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Grid.Row="0" Grid.Column="1" Background="#f0f9ff" CornerRadius="8" Padding="15" Margin="5,0,0,5">
+                                                    <StackPanel>
+                                                        <TextBlock Text="New Accounts" FontSize="10" Foreground="#0369a1"/>
+                                                        <TextBlock Text="{Binding StructuredScanResult.Logs.NewAccounts}" FontSize="22" FontWeight="Heavy" Foreground="#075985"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+
+                                <Border Background="White" Padding="20" CornerRadius="12" BoxShadow="0 2 8 0 #08000000">
+                                    <StackPanel Spacing="10">
+                                        <TextBlock Text="Analyse de Persistance" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                        <TextBlock Text="Planification et Services Critiques détectés" FontSize="13" Foreground="#64748b" Margin="0,0,0,10"/>
+                                        
+                                        <Expander Header="Services en cours d'exécution (Top)" IsExpanded="False">
+                                            <ItemsControl ItemsSource="{Binding StructuredScanResult.Persistence.ServicesRunningTop}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate><TextBlock Text="{Binding}" FontSize="12" Margin="0,2" Foreground="#334155"/></DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Expander>
+
+                                        <Expander Header="Tâches Planifiées / Cron" IsExpanded="False">
+                                            <StackPanel>
+                                                <ItemsControl ItemsSource="{Binding StructuredScanResult.Persistence.CronFiles}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate><TextBlock Text="{Binding}" FontSize="12" Margin="0,2" Foreground="#334155"/></DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                                <ItemsControl ItemsSource="{Binding StructuredScanResult.Persistence.TachesSuspectes}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate><TextBlock Text="{Binding}" FontSize="12" Margin="0,2" Foreground="#ef4444" FontWeight="Bold"/></DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </Expander>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+
+                <!-- Information si vide -->
+                <Border IsVisible="{Binding StructuredScanResult, Converter={x:Static ObjectConverters.IsNull}}" 
+                        Background="#f8f9fa" BorderBrush="#dee2e6" BorderThickness="1" CornerRadius="12" Padding="40" VerticalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Spacing="10">
+                        <PathIcon Data="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5.27,7.91L12,11.69L18.73,7.91L12,4.15M5,15.91L11,19.29V12.69L5,9.31V15.91M19,15.91V9.31L13,12.69V19.29L19,15.91Z" 
+                                  Width="48" Height="48" Foreground="#bdc3c7"/>
+                        <TextBlock Text="Aucun scan en cours. Cliquez sur le bouton pour démarrer l'audit." 
+                                   HorizontalAlignment="Center" Foreground="#95a5a6"/>
+                    </StackPanel>
+                </Border>
+                </StackPanel>
+            </ScrollViewer>
 
             <!-- Members -->
             <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Members'}" Spacing="15">

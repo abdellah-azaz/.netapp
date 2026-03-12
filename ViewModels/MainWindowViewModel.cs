@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -13,6 +15,21 @@ namespace MonAppMultiplateforme.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService;
+    private readonly ScannerService _scannerService;
+
+    // --- Antivirus Properties ---
+    [ObservableProperty] private AVScanReport? _lastAVScanResult;
+    [ObservableProperty] private ObservableCollection<AVHistoryEntry> _avHistory = new();
+    [ObservableProperty] private ObservableCollection<AVQuarantineEntry> _avQuarantine = new();
+    [ObservableProperty] private string _avStatsText = "Chargement...";
+    [ObservableProperty] private string _scanTargetPath = string.Empty;
+    [ObservableProperty] private bool _isAVScanning = false;
+
+    [ObservableProperty]
+    private ScanResult? _structuredScanResult;
+
+    [ObservableProperty]
+    private bool _isScanning = false;
 
     [ObservableProperty]
     private string _password = string.Empty;
@@ -53,12 +70,74 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private ObservableCollection<MemberSelection> _memberSelectionList = new();
 
+    [ObservableProperty]
+    private int _criticalRiskCount = 0;
+
+    [ObservableProperty]
+    private int _highRiskCount = 0;
+
+    [ObservableProperty]
+    private int _mediumRiskCount = 0;
+
+    [ObservableProperty]
+    private int _lowRiskCount = 0;
+
+    [ObservableProperty]
+    private int _securityScore = 100;
+
     private string _lastProcessedPassword = string.Empty;
 
     public MainWindowViewModel()
     {
         // Credentials provided by user: root / Azaz2003@abdellah
         _databaseService = new DatabaseService("localhost", 3306, "passworddb", "root", "Azaz2003@abdellah");
+        _scannerService = new ScannerService("http://127.0.0.1:8000");
+    }
+
+    [RelayCommand]
+    private async Task RunScan()
+    {
+        IsScanning = true;
+        StatusMessage = "Audit de sécurité en cours...";
+        // ScanResult property was removed and replaced by StructuredScanResult
+        
+        var resultJson = await _scannerService.RunScanAsync();
+        
+        if (resultJson != null && !resultJson.StartsWith("Erreur"))
+        {
+            try 
+            {
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                StructuredScanResult = JsonSerializer.Deserialize<ScanResult>(resultJson, options);
+                CalculateRiskMetrics();
+                StatusMessage = "Scan terminé avec succès.";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Deserialization failed: {ex.Message}");
+                Console.WriteLine($"[ERROR] StackTrace: {ex.StackTrace}");
+                StatusMessage = $"Erreur de lecture : {ex.Message}";
+            }
+        }
+        else
+        {
+            StatusMessage = resultJson ?? "Le scan a échoué.";
+        }
+        IsScanning = false;
+    }
+
+    private void CalculateRiskMetrics()
+    {
+        if (StructuredScanResult == null) return;
+
+        CriticalRiskCount = StructuredScanResult.Risques.Count(r => r.Niveau == "CRITIQUE");
+        HighRiskCount = StructuredScanResult.Risques.Count(r => r.Niveau == "ÉLEVÉ" || r.Niveau == "ELEVE");
+        MediumRiskCount = StructuredScanResult.Risques.Count(r => r.Niveau == "MOYEN");
+        LowRiskCount = StructuredScanResult.Risques.Count(r => r.Niveau == "FAIBLE" || r.Niveau == "INFORMATION" || string.IsNullOrEmpty(r.Niveau));
+
+        // Basic scoring: Start at 100, -25 per Critical, -15 per High, -5 per Medium
+        int score = 100 - (CriticalRiskCount * 25) - (HighRiskCount * 15) - (MediumRiskCount * 5);
+        SecurityScore = Math.Max(0, score);
     }
 
     [RelayCommand]
@@ -69,6 +148,104 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             await LoadMembers();
         }
+        else if (page == "Antivirus")
+        {
+            await RefreshAVData();
+        }
+    }
+
+    [RelayCommand]
+    private async Task RefreshAVData()
+    {
+        await Task.WhenAll(LoadAVStats(), LoadAVHistory(), LoadAVQuarantine());
+    }
+
+    private async Task LoadAVStats()
+    {
+        var stats = await _scannerService.GetAVStatsAsync();
+        if (stats != null)
+        {
+            // Simple parsing of "stats" output or just show the text
+            AvStatsText = stats;
+        }
+    }
+
+    private async Task LoadAVHistory()
+    {
+        var json = await _scannerService.GetAVHistoryAsync();
+        if (json != null)
+        {
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var history = JsonSerializer.Deserialize<List<AVHistoryEntry>>(json, options);
+            if (history != null) AvHistory = new ObservableCollection<AVHistoryEntry>(history);
+        }
+    }
+
+    private async Task LoadAVQuarantine()
+    {
+        var json = await _scannerService.GetQuarantineAsync();
+        if (json != null)
+        {
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var items = JsonSerializer.Deserialize<List<AVQuarantineEntry>>(json, options);
+            if (items != null) AvQuarantine = new ObservableCollection<AVQuarantineEntry>(items);
+        }
+    }
+
+    [RelayCommand]
+    private async Task RunAVScan()
+    {
+        if (string.IsNullOrWhiteSpace(ScanTargetPath))
+        {
+            StatusMessage = "Veuillez entrer un chemin à scanner.";
+            return;
+        }
+
+        IsAVScanning = true;
+        StatusMessage = "Scan AV-Shield en cours...";
+        
+        var resultJson = await _scannerService.RunAVScanAsync(ScanTargetPath);
+        
+        if (resultJson != null && !resultJson.StartsWith("Erreur"))
+        {
+            try 
+            {
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var root = JsonDocument.Parse(resultJson);
+                if (root.RootElement.TryGetProperty("report", out var reportElem) && reportElem.ValueKind != JsonValueKind.Null)
+                {
+                    var reportJson = reportElem.GetRawText();
+                    Console.WriteLine($"DEBUG: Received Report JSON: {reportJson}");
+                    
+                    LastAVScanResult = JsonSerializer.Deserialize<AVScanReport>(reportJson, options);
+                    
+                    if (LastAVScanResult != null)
+                    {
+                        Console.WriteLine($"DEBUG: Deserialized Report - Malwares: {LastAVScanResult.Statistics.MalwareFiles}, Files Count: {LastAVScanResult.Files?.Count}");
+                        StatusMessage = $"Scan terminé. Menaces : {LastAVScanResult.Statistics.MalwareFiles}";
+                    }
+                    else
+                    {
+                        StatusMessage = "Erreur : Échec de la désérialisation du rapport.";
+                    }
+                    await RefreshAVDataCommand.ExecuteAsync(null);
+                }
+                else
+                {
+                    StatusMessage = "Attention : Aucun rapport généré (le fichier n'existe peut-être plus).";
+                    Console.WriteLine("DEBUG: No report found in response or report is null.");
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = $"Erreur de parsing : {ex.Message}";
+            }
+        }
+        else
+        {
+            StatusMessage = resultJson ?? "Le scan a échoué.";
+        }
+        IsAVScanning = false;
     }
 
     partial void OnSearchTextChanged(string value)
