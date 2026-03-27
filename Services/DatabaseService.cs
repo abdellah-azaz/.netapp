@@ -18,16 +18,17 @@ public class DatabaseService
         _connectionString = $"Server={host};Port={port};Database={database};User ID={user};Password={password};";
     }
 
-    public async Task<bool> SavePasswordAsync(string password)
+    public async Task<bool> SavePasswordAsync(string password, string ownerEmail)
     {
         try
         {
             using var connection = new MySqlConnection(_connectionString);
             await connection.OpenAsync();
-
-            var query = "INSERT INTO passwords (psswrd) VALUES (@psswrd)";
+            
+            var query = "INSERT INTO passwords (psswrd, owner_email) VALUES (@psswrd, @owner_email)";
             using var command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@psswrd", password);
+            command.Parameters.AddWithValue("@owner_email", ownerEmail);
 
             await command.ExecuteNonQueryAsync();
             return true;
@@ -39,11 +40,15 @@ public class DatabaseService
         }
     }
 
-    public async Task<string?> GenerateAndEncryptPasswordAsync()
+    public async Task<string?> GenerateAndEncryptPasswordAsync(string ownerEmail)
     {
         try
         {
-            var response = await _httpClient.PostAsync("http://127.0.0.1:8000/generate", null);
+            var payload = new { owner_email = ownerEmail };
+            var jsonPayload = JsonSerializer.Serialize(payload);
+            var contentString = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("http://127.0.0.1:8000/generate", contentString);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -59,11 +64,11 @@ public class DatabaseService
         }
     }
 
-    public async Task<string?> EncryptAndSavePasswordAsync(string password)
+    public async Task<string?> EncryptAndSavePasswordAsync(string password, string ownerEmail)
     {
         try
         {
-            var payload = new { text = password };
+            var payload = new { text = password, owner_email = ownerEmail };
             var jsonPayload = JsonSerializer.Serialize(payload);
             var contentString = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
 
@@ -83,11 +88,11 @@ public class DatabaseService
         }
     }
 
-    public async Task<Member?> AddMemberAsync(string fullname, string mail)
+    public async Task<Member?> AddMemberAsync(string fullname, string mail, string ownerEmail)
     {
         try
         {
-            var payload = new { fullname = fullname, mail = mail };
+            var payload = new { fullname = fullname, mail = mail, owner_email = ownerEmail };
             var jsonPayload = JsonSerializer.Serialize(payload);
             var contentString = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
 
@@ -106,11 +111,11 @@ public class DatabaseService
         }
     }
 
-    public async Task<List<Member>> GetMembersAsync()
+    public async Task<List<Member>> GetMembersAsync(string ownerEmail)
     {
         try
         {
-            var response = await _httpClient.GetAsync("http://127.0.0.1:8000/members");
+            var response = await _httpClient.GetAsync($"http://127.0.0.1:8000/members?email={Uri.EscapeDataString(ownerEmail)}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -126,11 +131,11 @@ public class DatabaseService
         }
     }
 
-    public async Task<List<Member>> SearchMembersAsync(string query)
+    public async Task<List<Member>> SearchMembersAsync(string query, string ownerEmail)
     {
         try
         {
-            var response = await _httpClient.GetAsync($"http://127.0.0.1:8000/members/search?fullname={Uri.EscapeDataString(query)}");
+            var response = await _httpClient.GetAsync($"http://127.0.0.1:8000/members/search?fullname={Uri.EscapeDataString(query)}&email={Uri.EscapeDataString(ownerEmail)}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -146,11 +151,11 @@ public class DatabaseService
         }
     }
 
-    public async Task<bool> UpdateMemberAsync(int id, string fullname, string mail)
+    public async Task<bool> UpdateMemberAsync(int id, string fullname, string mail, string ownerEmail)
     {
         try
         {
-            var payload = new { fullname = fullname, mail = mail };
+            var payload = new { fullname = fullname, mail = mail, owner_email = ownerEmail };
             var jsonPayload = JsonSerializer.Serialize(payload);
             var contentString = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
 
@@ -164,11 +169,11 @@ public class DatabaseService
         }
     }
 
-    public async Task<bool> DeleteMemberAsync(int id)
+    public async Task<bool> DeleteMemberAsync(int id, string ownerEmail)
     {
         try
         {
-            var response = await _httpClient.DeleteAsync($"http://127.0.0.1:8000/members/{id}");
+            var response = await _httpClient.DeleteAsync($"http://127.0.0.1:8000/members/{id}?email={Uri.EscapeDataString(ownerEmail)}");
             return response.IsSuccessStatusCode;
         }
         catch (Exception ex)

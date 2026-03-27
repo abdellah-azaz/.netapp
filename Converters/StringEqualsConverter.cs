@@ -11,7 +11,15 @@ public class StringEqualsConverter : IValueConverter
         if (value == null || parameter == null)
             return false;
 
-        return value.ToString() == parameter.ToString();
+        string valStr = value.ToString() ?? "";
+        string paramStr = parameter.ToString() ?? "";
+
+        if (paramStr.StartsWith("!"))
+        {
+            return valStr != paramStr.Substring(1);
+        }
+
+        return valStr == paramStr;
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

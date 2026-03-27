@@ -9,6 +9,8 @@
     <Application.Resources>
         <conv:StringEqualsConverter x:Key="StringEqualsConverter" />
         <conv:BooleanToBrushConverter x:Key="BooleanToBrushConverter" />
+        <conv:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+        <conv:ResultToBrushConverter x:Key="ResultToBrushConverter" />
     </Application.Resources>
 
     <Application.DataTemplates>

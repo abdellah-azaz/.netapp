@@ -20,6 +20,14 @@
         <StreamGeometry x:Key="IconSettings">M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.35 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.97 19.05,5.05L16.56,6.05C16.04,5.65 15.48,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.52,5.32 7.96,5.65 7.44,6.05L4.95,5.05C4.73,4.97 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.35 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.35 8.52,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.48,18.68 16.04,18.35 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z</StreamGeometry>
         <StreamGeometry x:Key="IconSupport">M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z</StreamGeometry>
         <StreamGeometry x:Key="IconMembers">M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15.22 17,16.5V19H22V16.5C22,14.58 18.59,13.41 16,13M8,13C5.41,13 2,14.58 2,16.5V19H14V16.5C14,14.58 10.59,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z</StreamGeometry>
+        <StreamGeometry x:Key="IconRestore">M13,3A9,9 0 0,0 4,12H1L4.89,15.89L8.78,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z</StreamGeometry>
+        <StreamGeometry x:Key="IconDelete">M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19V4M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z</StreamGeometry>
+        <StreamGeometry x:Key="IconVault">M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.66,7 15,8.34 15,10V11H16V17H8V11H9V10C9,8.34 10.34,7 12,7M12,8.5A1.5,1.5 0 0,0 10.5,10V11H13.5V10A1.5,1.5 0 0,0 12,8.5Z</StreamGeometry>
+        <StreamGeometry x:Key="IconFolder">M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z</StreamGeometry>
+        <StreamGeometry x:Key="IconHistory">M13,3A9,9 0 0,0 4,12H1L4.89,15.89L8.78,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z</StreamGeometry>
+        <StreamGeometry x:Key="IconActivity">M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.58L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z</StreamGeometry>
+        <StreamGeometry x:Key="IconLogout">M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12C20,9.28 18.64,6.88 16.56,5.44M13,3H11V13H13V3Z</StreamGeometry>
+        <conv:BoolAndConverter x:Key="BoolAndConverter"/>
     </Window.Resources>
 
     <Design.DataContext>
@@ -45,149 +53,500 @@
         </Style>
     </Window.Styles>
 
-    <Grid ColumnDefinitions="250,*">
-        <!-- Sidebar -->
-        <Border Grid.Column="0" Background="#2c3e50" Padding="10">
-            <DockPanel>
-                <!-- Top Section: Logo + Main Nav -->
-                <StackPanel DockPanel.Dock="Top" Spacing="5">
-                    <Border Background="White" Width="60" Height="60" CornerRadius="30" Margin="0,10,0,25" HorizontalAlignment="Center" BoxShadow="0 4 8 0 #40000000" ClipToBounds="True">
-                        <Image Source="/Assets/logo.png" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
-                    
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Accueil" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconHome}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Accueil" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Password Manager" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconPassword}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Password Manager" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Antivirus" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconAntivirus}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Antivirus" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Boot" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconBoot}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Boot" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Members" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconMembers}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Membres" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+    <Panel>
+        <!-- Main Application Content -->
+        <Grid ColumnDefinitions="250,*" IsVisible="{Binding IsLoggedIn}">
+            <!-- Sidebar -->
+            <Border Grid.Column="0" Background="#2c3e50" Padding="10">
+                <DockPanel>
+                    <!-- Top Section: Logo + Main Nav -->
+                    <StackPanel DockPanel.Dock="Top" Spacing="5">
+                        <Border Background="White" Width="60" Height="60" CornerRadius="30" Margin="0,10,0,25" HorizontalAlignment="Center" BoxShadow="0 4 8 0 #40000000" ClipToBounds="True">
+                            <Image Source="/Assets/logo.png" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Accueil" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconHome}" Width="18" Height="18" Foreground="White"/>
+                                <TextBlock Text="Accueil" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Password Manager" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconPassword}" Width="18" Height="18" Foreground="White"/>
+                                <TextBlock Text="Password Manager" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Antivirus" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <Grid HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <PathIcon Data="{StaticResource IconAntivirus}" Width="18" Height="18" Foreground="White"/>
+                                    <TextBlock Text="Antivirus" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Background="#e74c3c" 
+                                        IsVisible="{Binding HasQuarantineItems}"
+                                        Height="18" MinWidth="18" 
+                                        CornerRadius="9" 
+                                        Padding="5,0"
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,5,0">
+                                    <TextBlock Text="{Binding QuarantineBadgeCount}" 
+                                               FontSize="10" FontWeight="Bold" 
+                                               Foreground="White" 
+                                               VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Boot" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <Grid HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <PathIcon Data="{StaticResource IconBoot}" Width="18" Height="18" Foreground="White"/>
+                                    <TextBlock Text="Boot" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Background="#e74c3c" 
+                                        IsVisible="{Binding HasBootVulnerabilities}"
+                                        Height="18" MinWidth="18" 
+                                        CornerRadius="9" 
+                                        Padding="5,0"
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,5,0">
+                                    <TextBlock Text="{Binding BootBadgeCount}" 
+                                               FontSize="10" FontWeight="Bold" 
+                                               Foreground="White" 
+                                               VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Vault" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <Grid HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <PathIcon Data="{StaticResource IconVault}" Width="18" Height="18" Foreground="White"/>
+                                    <TextBlock Text="Coffre-fort" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <Border Background="#3498db" 
+                                        IsVisible="{Binding HasVaultFiles}"
+                                        Height="18" MinWidth="18" 
+                                        CornerRadius="9" 
+                                        Padding="5,0"
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,5,0">
+                                    <TextBlock Text="{Binding VaultBadgeCount}" 
+                                               FontSize="10" FontWeight="Bold" 
+                                               Foreground="White" 
+                                               VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Members" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconMembers}" Width="18" Height="18" Foreground="White"/>
+                                <TextBlock Text="Membres" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
 
-                <!-- Bottom Section: User / Settings -->
-                <StackPanel DockPanel.Dock="Bottom" Spacing="5" VerticalAlignment="Bottom">
-                    <Rectangle Height="1" Fill="White" Opacity="0.2" Margin="5,0,5,10"/>
-                    
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Profil" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconProfile}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Profil" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Réglages" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconSettings}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Réglages" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Contact Support" 
-                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <PathIcon Data="{StaticResource IconSupport}" Width="18" Height="18" Foreground="White"/>
-                            <TextBlock Text="Contact Support" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-            </DockPanel>
-        </Border>
+                    <!-- Bottom Section: User / Settings -->
+                    <StackPanel DockPanel.Dock="Bottom" Spacing="5" VerticalAlignment="Bottom">
+                        <Rectangle Height="1" Fill="White" Opacity="0.2" Margin="5,0,5,10"/>
+                        
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Profil" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconProfile}" Width="18" Height="18" Foreground="White"/>
+                                <TextBlock Text="Profil" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Réglages" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconSettings}" Width="18" Height="18" Foreground="White"/>
+                                <TextBlock Text="Réglages" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding NavigateCommand}" CommandParameter="Contact Support" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconSupport}" Width="18" Height="18" Foreground="White"/>
+                                <TextBlock Text="Contact Support" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" Command="{Binding ToggleLogoutConfirmationCommand}" 
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                                Foreground="#e74c3c">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconLogout}" Width="18" Height="18" Foreground="#e74c3c"/>
+                                <TextBlock Text="Déconnexion" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- Content Area (The rest of the file content until the end of original Grid) -->
+            <!-- Note: I will need to close the Grid and Panel properly at the end -->
 
         <!-- Content Area -->
         <Grid Grid.Column="1" Margin="20">
-            <!-- Accueil -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Accueil'}">
-                <TextBlock Text="Page d'Accueil" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Bienvenue sur votre application multiplateforme. C'est ici que commence votre expérience." TextWrapping="Wrap"/>
-            </StackPanel>
+            <!-- Accueil (Redesigned as Documentation) -->
+            <ScrollViewer IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Accueil'}">
+                <StackPanel Spacing="30" Margin="0,0,15,0">
+                    
+                    <!-- Hero Section: Welcome & Core Purpose -->
+                    <Border CornerRadius="16" Padding="40" Background="#2c3e50" BoxShadow="0 10 30 0 #40000000">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="15" VerticalAlignment="Center">
+                                <TextBlock Text="Bienvenue sur Crypton Suite" FontSize="32" FontWeight="Black" Foreground="White"/>
+                                <TextBlock Text="Votre plateforme tout-en-un pour la sécurité système et la gestion de la confidentialité." 
+                                           FontSize="16" Foreground="#bdc3c7" TextWrapping="Wrap" MaxWidth="500"/>
+                                <Border Background="#3498db" HorizontalAlignment="Left" CornerRadius="8" Padding="15,8" Margin="0,10,0,0">
+                                    <TextBlock Text="Système Protégé" FontWeight="Bold" Foreground="White" FontSize="12"/>
+                                </Border>
+                            </StackPanel>
+                            <PathIcon Grid.Column="1" Data="{StaticResource IconHome}" Width="100" Height="100" Foreground="White" Opacity="0.1" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
 
-            <!-- Password Manager (Existing UI) -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Password Manager'}" Spacing="15">
-                <TextBlock Text="Gestionnaire de mots de passe" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                
-                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,0,0,10">
-                    <!-- Saisir mot de passe -->
-                    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Spacing="5" Margin="0,0,0,10">
-                        <TextBlock Text="Saisir votre mot de passe :" FontWeight="Bold"/>
-                        <TextBox PasswordChar="*" 
-                                 Text="{Binding Password}" 
-                                 Watermark="Mot de passe" />
+                    <!-- Guided Security Path -->
+                    <StackPanel Spacing="20">
+                        <TextBlock Text="Votre Parcours de Sécurité" FontSize="22" FontWeight="Bold" Foreground="#2c3e50"/>
+                        <TextBlock Text="Suivez ces étapes pour sécuriser complètement votre environnement." FontSize="14" Foreground="#7f8c8d" Margin="0,-10,0,10"/>
+                        
+                        <Grid ColumnDefinitions="*,Auto,*,Auto,*">
+                            <!-- Step 1: Password Manager -->
+                            <Button Grid.Column="0" Command="{Binding NavigateCommand}" CommandParameter="Password Manager" 
+                                    Background="Transparent" Padding="0" BorderThickness="0">
+                                <Border Background="White" CornerRadius="12" Padding="25" BoxShadow="0 4 15 0 #10000000">
+                                    <StackPanel Spacing="15" HorizontalAlignment="Center">
+                                        <Border Width="50" Height="50" Background="#3498db" CornerRadius="25">
+                                            <TextBlock Text="1" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <PathIcon Data="{StaticResource IconPassword}" Foreground="#3498db" Width="30" Height="30" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Password Manager" FontWeight="Bold" FontSize="16" Foreground="#2c3e50" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Sécurisez vos accès et identifiants avec AES-GCM." FontSize="12" Foreground="#7f8c8d" TextWrapping="Wrap" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+
+                            <!-- Arrow 1 -->
+                            <PathIcon Grid.Column="1" Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" Width="24" Height="24" Foreground="#bdc3c7" Margin="10,0" VerticalAlignment="Center"/>
+
+                            <!-- Step 2: Antivirus -->
+                            <Button Grid.Column="2" Command="{Binding NavigateCommand}" CommandParameter="Antivirus" 
+                                    Background="Transparent" Padding="0" BorderThickness="0">
+                                <Border Background="White" CornerRadius="12" Padding="25" BoxShadow="0 4 15 0 #10000000">
+                                    <StackPanel Spacing="15" HorizontalAlignment="Center">
+                                        <Border Width="50" Height="50" Background="#e74c3c" CornerRadius="25">
+                                            <TextBlock Text="2" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <PathIcon Data="{StaticResource IconAntivirus}" Foreground="#e74c3c" Width="30" Height="30" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Antivirus Shield" FontWeight="Bold" FontSize="16" Foreground="#2c3e50" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Protégez vos fichiers contre les menaces hybrides." FontSize="12" Foreground="#7f8c8d" TextWrapping="Wrap" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+
+                            <!-- Arrow 2 -->
+                            <PathIcon Grid.Column="3" Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" Width="24" Height="24" Foreground="#bdc3c7" Margin="10,0" VerticalAlignment="Center"/>
+
+                            <!-- Step 3: Boot -->
+                            <Button Grid.Column="4" Command="{Binding NavigateCommand}" CommandParameter="Boot" 
+                                    Background="Transparent" Padding="0" BorderThickness="0">
+                                <Border Background="White" CornerRadius="12" Padding="25" BoxShadow="0 4 15 0 #10000000">
+                                    <StackPanel Spacing="15" HorizontalAlignment="Center">
+                                        <Border Width="50" Height="50" Background="#27ae60" CornerRadius="25">
+                                            <TextBlock Text="3" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <PathIcon Data="{StaticResource IconBoot}" Foreground="#27ae60" Width="30" Height="30" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Audit Sécurité" FontWeight="Bold" FontSize="16" Foreground="#2c3e50" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Analysez l'intégrité de votre système d'exploitation." FontSize="12" Foreground="#7f8c8d" TextWrapping="Wrap" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </Grid>
                     </StackPanel>
 
-                    <!-- Mot de passe chiffré -->
-                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Spacing="5" Margin="0,0,0,10">
-                        <TextBlock Text="Mot de passe chiffré :" FontWeight="Bold"/>
-                        <TextBox Text="{Binding EncryptedPassword}" 
-                                 Watermark="Le mot de passe chiffré apparaîtra ici" 
-                                 IsReadOnly="True"
-                                 Background="#f8f9fa"/>
-                    </StackPanel>
+                    <!-- User Guide Section (Omitted for brevity, keep existing content) -->
+                    <!-- ... -->
 
-                    <!-- Boutons Actions Rapides -->
-                    <UniformGrid Grid.Row="2" Grid.ColumnSpan="2" Columns="2" Margin="0,10,0,0">
-                        <Button Content="Générer" 
-                                Command="{Binding GeneratePasswordCommand}" 
-                                HorizontalAlignment="Stretch" 
-                                HorizontalContentAlignment="Center"
-                                Margin="0,0,5,0" />
-                        <Button Content="Valider" 
-                                Command="{Binding ValidatePasswordCommand}" 
-                                HorizontalAlignment="Stretch" 
-                                HorizontalContentAlignment="Center"
-                                Margin="5,0,0,0" />
-                    </UniformGrid>
-                </Grid>
+                    <!-- Support Link -->
+                    <Border Background="#f1f2f6" CornerRadius="12" Padding="20">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Besoin d'aide supplémentaire ?" FontWeight="Bold" Foreground="#34495e"/>
+                                <TextBlock Text="Contactez notre équipe de support technique pour toute assistance." FontSize="13" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Contacter le Support" 
+                                    Command="{Binding NavigateCommand}" CommandParameter="Contact Support"
+                                    Background="Transparent" Foreground="#3498db" FontWeight="Bold" BorderThickness="0"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
 
-                <TextBlock Text="{Binding StatusMessage}" 
-                           TextWrapping="Wrap" 
-                           HorizontalAlignment="Center" 
-                           Foreground="Gray"
-                           Margin="0,10,0,0"/>
-            </StackPanel>
-
-            <!-- Antivirus (Full Redesign matching AV-Shield) -->
-            <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Antivirus'}" RowDefinitions="Auto,*">
+            <!-- Vault (Coffre-fort) -->
+            <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Vault'}" RowDefinitions="Auto,*,Auto">
+                <!-- Header -->
                 <Border Grid.Row="0" Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,20" BoxShadow="0 4 12 0 #15000000">
                     <Grid ColumnDefinitions="*,Auto">
                         <StackPanel Spacing="5">
-                            <TextBlock Text="AV-Shield Protection" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
-                            <TextBlock Text="Moteur de scan hybride (Signatures, SHA256, Heuristique, Entropie)" Foreground="#7f8c8d" FontSize="14"/>
+                            <TextBlock Text="Coffre-fort Numérique" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
+                            <TextBlock Text="Stockez vos fichiers sensibles avec un chiffrement AES-GCM (256-bit) de niveau bancaire." Foreground="#7f8c8d" FontSize="14"/>
                         </StackPanel>
-                        <Button Grid.Column="1" VerticalAlignment="Center" Classes="nav" Command="{Binding RefreshAVDataCommand}" Padding="10">
-                            <PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Width="22" Height="22" Foreground="#3498db"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                             <Button Command="{Binding RefreshVaultCommand}" Classes="nav" ToolTip.Tip="Rafraîchir">
+                                <PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Width="20" Height="20" Foreground="#3498db"/>
+                            </Button>
+                            <Button Name="AddVaultFileButton" Click="AddVaultFileButton_Click" Background="#27ae60" Foreground="White" Padding="15,8" CornerRadius="8">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <PathIcon Data="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" Width="16" Height="16"/>
+                                    <TextBlock Text="Ajouter un fichier" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Content Area -->
+                <Grid Grid.Row="1">
+                    <ProgressBar Grid.Row="0" IsIndeterminate="True" IsVisible="{Binding IsVaultLoading}" Height="4" VerticalAlignment="Top" ZIndex="10"/>
+                    
+                    <Border Background="White" CornerRadius="12" BoxShadow="0 2 8 0 #08000000" ClipToBounds="True">
+                        <Panel>
+                            <!-- Empty State -->
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20" IsVisible="{Binding !HasVaultFiles}">
+                                <PathIcon Data="{StaticResource IconVault}" Width="80" Height="80" Foreground="#ecf0f1"/>
+                                <TextBlock Text="Votre coffre-fort est vide" FontSize="18" Foreground="#95a5a6" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Chiffrez vos premiers fichiers sensibles en cliquant sur le bouton ci-dessous." FontSize="13" Foreground="#bdc3c7" HorizontalAlignment="Center"/>
+                                <Button Click="AddVaultFileButton_Click" Background="#27ae60" Foreground="White" Padding="20,10" CornerRadius="8" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <PathIcon Data="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" Width="16" Height="16"/>
+                                        <TextBlock Text="Ajouter votre premier fichier" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+
+                            <!-- Files Table -->
+                            <DataGrid ItemsSource="{Binding VaultFiles}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" RowHeight="60" IsVisible="{Binding HasVaultFiles}">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Fichier" Width="*">
+                                        <DataTemplate DataType="models:VaultFile">
+                                            <StackPanel Orientation="Horizontal" Spacing="15" Margin="15,0">
+                                                <Border Width="36" Height="36" Background="#f8fafc" CornerRadius="8">
+                                                    <PathIcon Data="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z" Width="16" Height="16" Foreground="#64748b" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                                    <TextBlock Text="{Binding CreatedAtFormatted}" FontSize="10" Foreground="#95a5a6"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Identifiant Unique" Binding="{Binding file_id}" Width="300" />
+                                    <DataGridTemplateColumn Header="Actions" Width="180">
+                                        <DataTemplate DataType="models:VaultFile">
+                                            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                                                <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).DownloadVaultFileCommand}" CommandParameter="{Binding}" 
+                                                        ToolTip.Tip="Télécharger &amp; Déchiffrer"
+                                                        Background="#ebf5ff" BorderBrush="#3498db" BorderThickness="1" Padding="8,4">
+                                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                                        <PathIcon Data="M5,20V18H19V20H5M12,17L7,12H10V4H14V12H17L12,17Z" Width="14" Height="14" Foreground="#3498db"/>
+                                                        <TextBlock Text="Ouvrir" FontSize="11" Foreground="#3498db"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).DeleteVaultFileCommand}" CommandParameter="{Binding}"
+                                                        ToolTip.Tip="Supprimer définitivement"
+                                                        Background="#fef2f2" BorderBrush="#e74c3c" BorderThickness="1" Padding="8,4">
+                                                    <PathIcon Data="{StaticResource IconDelete}" Width="14" Height="14" Foreground="#e74c3c"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Panel>
+                    </Border>
+                </Grid>
+                
+                <!-- Status Message (Specific to Vault) -->
+                <Border Grid.Row="2" Background="#f1f2f6" CornerRadius="8" Padding="15" Margin="0,15,0,0" IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <PathIcon Data="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" Width="18" Height="18" Foreground="#3498db"/>
+                        <TextBlock Text="{Binding StatusMessage}" FontSize="13" Foreground="#2c3e50" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Password Manager (Redesigned) -->
+            <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Password Manager'}" RowDefinitions="Auto,*">
+                <!-- Header Card -->
+                <Border Grid.Row="0" Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,20" BoxShadow="0 4 12 0 #15000000">
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Gestionnaire de Mots de Passe" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
+                        <TextBlock Text="Sécurisez vos données avec le chiffrement AES-GCM et partagez-les en toute sécurité." Foreground="#7f8c8d" FontSize="14"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Action Card -->
+                <Border Grid.Row="1" Background="White" CornerRadius="12" Padding="30" BoxShadow="0 2 10 0 #10000000" VerticalAlignment="Top">
+                    <StackPanel Spacing="25">
+                        <!-- Saisie -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Saisir votre mot de passe" FontWeight="SemiBold" Foreground="#34495e" FontSize="14"/>
+                            <TextBox PasswordChar="*" 
+                                     Text="{Binding Password}" 
+                                     Watermark="Tapez un mot de passe à sécuriser..." 
+                                     Height="45"
+                                     VerticalContentAlignment="Center"
+                                     CornerRadius="8"/>
+                        </StackPanel>
+
+                        <!-- Actions Principal -->
+                        <Grid ColumnDefinitions="*,*">
+                            <Button Grid.Column="0" 
+                                    Content="Générer Aléatoirement" 
+                                    Command="{Binding GeneratePasswordCommand}" 
+                                    IsVisible="{Binding IsRandomPasswordEnabled}"
+                                    HorizontalAlignment="Stretch" 
+                                    Height="45"
+                                    Background="#34495e"
+                                    Foreground="White"
+                                    CornerRadius="8"
+                                    Margin="0,0,7,0"
+                                    HorizontalContentAlignment="Center"/>
+                            <Button Grid.Column="1" 
+                                    Content="Chiffrer &amp; Enregistrer" 
+                                    Command="{Binding ValidatePasswordCommand}" 
+                                    HorizontalAlignment="Stretch" 
+                                    Height="45"
+                                    Classes="accent"
+                                    CornerRadius="8"
+                                    Margin="7,0,0,0"
+                                    HorizontalContentAlignment="Center"/>
+                        </Grid>
+
+                        <Separator Height="1" Background="#ecf0f1" Margin="0,10"/>
+
+                        <!-- Résultat -->
+                        <StackPanel Spacing="8" IsVisible="{Binding IsEncryptedResultVisible}">
+                            <TextBlock Text="Mot de passe chiffré (Résultat)" FontWeight="SemiBold" Foreground="#34495e" FontSize="14"/>
+                            <TextBox Text="{Binding EncryptedPassword}" 
+                                     Watermark="Le résultat apparaîtra ici après action..." 
+                                     IsReadOnly="True"
+                                     Height="45"
+                                     VerticalContentAlignment="Center"
+                                     Background="#f8f9fa"
+                                     CornerRadius="8"/>
+                        </StackPanel>
+
+                        <!-- Message d'état -->
+                        <Border Background="#f1f2f6" CornerRadius="8" Padding="15" IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <PathIcon Data="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" Width="18" Height="18" Foreground="#3498db"/>
+                                <TextBlock Text="{Binding StatusMessage}" 
+                                           FontSize="13"
+                                           Foreground="#2c3e50"
+                                           VerticalAlignment="Center"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Antivirus (Full Redesign matching AV-Shield) -->
+            <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Antivirus'}" RowDefinitions="Auto,*">
+                <Border Grid.Row="0" CornerRadius="16" Padding="25" Margin="0,0,0,25" BoxShadow="0 8 20 0 #20000000" IsVisible="{Binding IsRealtimeAnalysisEnabled}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                            <GradientStop Color="#2c3e50" Offset="0.0"/>
+                            <GradientStop Color="#1a252f" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="20">
+                            <!-- Left: Title & Status Badge -->
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <Border Width="60" Height="60" Background="#3498db" CornerRadius="12" BoxShadow="0 4 10 0 #40000000">
+                                    <PathIcon Data="{StaticResource IconAntivirus}" Foreground="White" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center" Spacing="2">
+                                    <TextBlock Text="Protection Temps Réel" FontSize="28" FontWeight="Black" Foreground="White"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <Ellipse Width="8" Height="8" Fill="{Binding RealtimeStatusColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding RealtimeStatusText}" FontSize="12" FontWeight="Bold" Foreground="{Binding RealtimeStatusColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="•" Foreground="White" Opacity="0.3" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Surveillance active 24/7" FontSize="12" Foreground="#bdc3c7" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <!-- Right: Cards Grid -->
+                            <UniformGrid Columns="3" Margin="0,5,0,0">
+                                <!-- Card: Folders -->
+                                <Border Background="#10ffffff" CornerRadius="12" Padding="15" Margin="0,0,10,0">
+                                    <StackPanel Orientation="Horizontal" Spacing="12">
+                                        <PathIcon Data="{StaticResource IconFolder}" Foreground="#3498db" Width="20" Height="20" VerticalAlignment="Top"/>
+                                        <StackPanel Spacing="2">
+                                            <TextBlock Text="DOSSIERS SURVEILLÉS" FontSize="10" FontWeight="Bold" Foreground="#7f8c8d"/>
+                                            <TextBlock Text="{Binding RealtimeDirectoriesText}" FontSize="11" Foreground="White" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <!-- Card: Last Event (Interactive Button) -->
+                                <Button Command="{Binding OpenRealtimeEventsCommand}" Padding="0" Background="Transparent" BorderThickness="0" Margin="5,0,5,0">
+                                    <Border Background="#10ffffff" CornerRadius="12" Padding="15" ClipToBounds="True">
+                                        <StackPanel Orientation="Horizontal" Spacing="12">
+                                            <PathIcon Data="{StaticResource IconHistory}" Foreground="#f1c40f" Width="20" Height="20" VerticalAlignment="Top"/>
+                                            <StackPanel Spacing="2">
+                                                <TextBlock Text="DERNIERS ÉVÉNEMENTS" FontSize="10" FontWeight="Bold" Foreground="#7f8c8d"/>
+                                                <TextBlock Text="{Binding RealtimeLastEventText}" 
+                                                           FontSize="11" Foreground="White" FontWeight="SemiBold"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           ToolTip.Tip="{Binding RealtimeLastEventText}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </Button>
+                                
+                                <!-- Card: Today Stats (Interactive Button) -->
+                                <Button Command="{Binding OpenRealtimeEventsCommand}" Padding="0" Background="Transparent" BorderThickness="0" Margin="10,0,0,0">
+                                    <Border Background="#10ffffff" CornerRadius="12" Padding="15">
+                                        <StackPanel Orientation="Horizontal" Spacing="12">
+                                            <PathIcon Data="{StaticResource IconActivity}" Foreground="#2ecc71" Width="20" Height="20" VerticalAlignment="Top"/>
+                                            <StackPanel Spacing="2">
+                                                <TextBlock Text="SCANS AUJOURD'HUI" FontSize="10" FontWeight="Bold" Foreground="#7f8c8d"/>
+                                                <TextBlock Text="{Binding RealtimeTodayCount}" FontSize="18" FontWeight="Black" Foreground="White"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </Button>
+                            </UniformGrid>
+                        </StackPanel>
+                        
+                        <!-- Refresh Button (Top Right Absolute) -->
+                        <Button Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                                Command="{Binding RefreshAVDataCommand}" 
+                                Background="Transparent" Padding="8" CornerRadius="20">
+                            <PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" 
+                                      Width="18" Height="18" Foreground="White" Opacity="0.5"/>
                         </Button>
                     </Grid>
                 </Border>
 
-                <TabControl Grid.Row="1" Classes="dashboard">
+                <TabControl Grid.Row="1" Classes="dashboard" SelectedIndex="{Binding SelectedAVTabIndex}">
                     <TabControl.Styles>
                         <Style Selector="TabItem">
                             <Setter Property="FontSize" Value="14"/>
@@ -199,13 +558,43 @@
                     <!-- Tab: Dashboard -->
                     <TabItem Header="Tableau de bord">
                         <ScrollViewer Margin="0,15,0,0">
-                            <StackPanel Spacing="20">
-                                <Border Background="#f8fafc" BorderBrush="#e2e8f0" BorderThickness="1" CornerRadius="8" Padding="20">
-                                    <StackPanel Spacing="10">
-                                        <TextBlock Text="Statistiques Globales" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{Binding AvStatsText}" FontFamily="Consolas, monospace" FontSize="12" TextWrapping="Wrap"/>
-                                    </StackPanel>
-                                </Border>
+                            <StackPanel Spacing="25">
+                                <!-- Global Stats Cards -->
+                                <UniformGrid Columns="3" IsVisible="{Binding GlobalStats, Converter={x:Static ObjectConverters.IsNotNull}}">
+                                    <!-- Total Scans -->
+                                    <Border Background="#ebf5ff" BorderBrush="#3498db" BorderThickness="1" CornerRadius="12" Padding="20" Margin="0,0,10,0">
+                                        <StackPanel Spacing="10" HorizontalAlignment="Center">
+                                            <PathIcon Data="M13,2V11H20L11,22V13H4L13,2Z" Foreground="#3498db" Width="24" Height="24"/>
+                                            <TextBlock Text="{Binding GlobalStats.TotalScans}" FontSize="28" FontWeight="Heavy" Foreground="#2c3e50" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="TOTAL SCANS" FontSize="11" FontWeight="Bold" Foreground="#34495e" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                    
+                                    <!-- Threats Detected -->
+                                    <Border Background="#fef2f2" BorderBrush="#e74c3c" BorderThickness="1" CornerRadius="12" Padding="20" Margin="5,0,5,0">
+                                        <StackPanel Spacing="10" HorizontalAlignment="Center">
+                                            <PathIcon Data="M13,14H11V9H13M13,18H11V16H13M1,21H23L12,2L1,21Z" Foreground="#e74c3c" Width="24" Height="24"/>
+                                            <TextBlock Text="{Binding GlobalStats.ThreatsDetected}" FontSize="28" FontWeight="Heavy" Foreground="#991b1b" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="MENACES DÉTECTÉES" FontSize="11" FontWeight="Bold" Foreground="#991b1b" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                    
+                                    <!-- In Quarantine -->
+                                    <Border Background="#f0fdf4" BorderBrush="#27ae60" BorderThickness="1" CornerRadius="12" Padding="20" Margin="10,0,0,0">
+                                        <StackPanel Spacing="10" HorizontalAlignment="Center">
+                                            <PathIcon Data="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" Foreground="#27ae60" Width="24" Height="24"/>
+                                            <TextBlock Text="{Binding GlobalStats.InQuarantine}" FontSize="28" FontWeight="Heavy" Foreground="#166534" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="EN QUARANTAINE" FontSize="11" FontWeight="Bold" Foreground="#166534" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </UniformGrid>
+
+                                <!-- Raw Output Toggle -->
+                                <Expander Header="Détails techniques (Brut)" IsExpanded="False" Background="Transparent" BorderThickness="0">
+                                    <Border Background="#f8fafc" BorderBrush="#e2e8f0" BorderThickness="1" CornerRadius="8" Padding="15">
+                                        <TextBlock Text="{Binding AvStatsText}" FontFamily="Consolas, monospace" FontSize="11" TextWrapping="Wrap" Foreground="#475569"/>
+                                    </Border>
+                                </Expander>
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -227,7 +616,7 @@
                                     <Border Background="#f0fdf4" CornerRadius="8" Padding="15" IsVisible="{Binding LastAVScanResult.Statistics.MalwareFiles, Converter={StaticResource StringEqualsConverter}, ConverterParameter='0'}">
                                         <TextBlock Text="Aucun malware détecté lors du dernier scan." Foreground="#166534" FontWeight="Bold"/>
                                     </Border>
-                                    <Border Background="#fef2f2" CornerRadius="8" Padding="15" IsVisible="{Binding LastAVScanResult.Statistics.MalwareFiles, Converter={StaticResource StringEqualsConverter}, ConverterParameter='0', Converter={StaticResource BooleanToBrushConverter}, ConverterParameter='False'}">
+                                    <Border Background="#fef2f2" CornerRadius="8" Padding="15" IsVisible="{Binding LastAVScanResult.Statistics.MalwareFiles, Converter={StaticResource StringEqualsConverter}, ConverterParameter='!0'}">
                                          <StackPanel Orientation="Horizontal" Spacing="10">
                                              <PathIcon Data="M13,14H11V9H13M13,18H11V16H13M1,21H23L12,2L1,21Z" Foreground="#991b1b" Width="20" Height="20"/>
                                              <TextBlock Text="{Binding LastAVScanResult.Statistics.MalwareFiles, StringFormat='\{0\} menaces détectées !'}" Foreground="#991b1b" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
@@ -241,13 +630,51 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate DataType="models:AVFileReport">
                                                         <TextBlock Text="{Binding Result}" 
-                                                                 Foreground="{Binding Result, Converter={StaticResource StringEqualsConverter}, ConverterParameter='MALWARE', Converter={StaticResource BooleanToBrushConverter}}" 
+                                                                 Foreground="{Binding Result, Converter={StaticResource ResultToBrushConverter}}" 
                                                                  FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
                                             </DataGridTemplateColumn>
                                             <DataGridTextColumn Header="Menace" Binding="{Binding Threat}" Width="*" />
                                             <DataGridTextColumn Header="Score" Binding="{Binding HeuristicScore}" Width="80" />
+                                            <DataGridTemplateColumn Header="Analyse" Width="150">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate DataType="models:AVFileReport">
+                                                        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).ExplainDetectionCommand}"
+                                                                CommandParameter="{Binding}"
+                                                                Background="Transparent" Padding="0" BorderThickness="0"
+                                                                HorizontalAlignment="Center">
+                                                            <Button.IsVisible>
+                                                                <MultiBinding Converter="{StaticResource BoolAndConverter}">
+                                                                    <Binding Path="Result" Converter="{StaticResource StringEqualsConverter}" ConverterParameter="!CLEAN"/>
+                                                                    <Binding Path="$parent[Window].((vm:MainWindowViewModel)DataContext).IsAIAnalysisEnabled"/>
+                                                                </MultiBinding>
+                                                            </Button.IsVisible>
+                                                            <Button.Styles>
+                                                                <Style Selector="Button:hover Border#ActionBorder">
+                                                                    <Setter Property="Background" Value="#f0f7ff"/>
+                                                                    <Setter Property="BorderBrush" Value="#3498db"/>
+                                                                </Style>
+                                                                <Style Selector="Button:hover PathIcon">
+                                                                    <Setter Property="Foreground" Value="#2980b9"/>
+                                                                </Style>
+                                                            </Button.Styles>
+                                                            <Border Name="ActionBorder" 
+                                                                    Background="#f8fafc" 
+                                                                    BorderBrush="#e2e8f0" 
+                                                                    BorderThickness="1" 
+                                                                    CornerRadius="20" 
+                                                                    Padding="12,6">
+                                                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                                                    <PathIcon Data="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" 
+                                                                              Width="14" Height="14" Foreground="#3498db"/>
+                                                                    <TextBlock Text="Analyse IA" FontSize="11" FontWeight="SemiBold" Foreground="#34495e" VerticalAlignment="Center"/>
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </StackPanel>
@@ -256,14 +683,56 @@
                     </TabItem>
 
                     <!-- Tab: Quarantaine -->
-                    <TabItem Header="Quarantaine">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="Quarantaine"/>
+                                <Border Background="#e74c3c" 
+                                        IsVisible="{Binding HasQuarantineItems}"
+                                        CornerRadius="10" Padding="6,1"
+                                        VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding QuarantineBadgeCount}" 
+                                               FontSize="10" FontWeight="Bold" Foreground="White"/>
+                                </Border>
+                            </StackPanel>
+                        </TabItem.Header>
                         <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
-                            <TextBlock Grid.Row="0" Text="Fichiers isolés par précaution" FontWeight="Bold" Margin="0,0,0,15"/>
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding AvQuarantine}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All">
+                            <TextBlock Grid.Row="0" Text="Fichiers isolés par précaution" FontWeight="Bold" Margin="0,0,0,15" Foreground="#2c3e50"/>
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding AvQuarantine}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All" BorderThickness="1" BorderBrush="#eee" RowHeight="50">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Fichier Original" Binding="{Binding OriginalPath}" Width="*" />
-                                    <DataGridTextColumn Header="Menace" Binding="{Binding ThreatName}" Width="150" />
+                                    <DataGridTemplateColumn Header="Menace" Width="150">
+                                        <DataTemplate DataType="models:AVQuarantineEntry">
+                                            <Border Background="#fff1f2" CornerRadius="4" Padding="8,4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding ThreatName}" Foreground="#be123c" FontWeight="SemiBold" FontSize="11"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn>
                                     <DataGridTextColumn Header="Date" Binding="{Binding QuarantineDate}" Width="150" />
+                                    <DataGridTemplateColumn Header="Actions" Width="180">
+                                        <DataTemplate DataType="models:AVQuarantineEntry">
+                                            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                                                <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).RestoreQuarantineItemCommand}" 
+                                                        CommandParameter="{Binding}"
+                                                        ToolTip.Tip="Restaurer"
+                                                        Background="#f0fdf4" BorderBrush="#16a34a" BorderThickness="1">
+                                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                                        <PathIcon Data="{StaticResource IconRestore}" Width="14" Height="14" Foreground="#16a34a"/>
+                                                        <TextBlock Text="Restaurer" FontSize="11" Foreground="#16a34a"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).DeleteQuarantineItemCommand}" 
+                                                        CommandParameter="{Binding}"
+                                                        ToolTip.Tip="Supprimer"
+                                                        Background="#fef2f2" BorderBrush="#dc2626" BorderThickness="1">
+                                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                                        <PathIcon Data="{StaticResource IconDelete}" Width="14" Height="14" Foreground="#dc2626"/>
+                                                        <TextBlock Text="Supprimer" FontSize="11" Foreground="#dc2626"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -363,7 +832,19 @@
                     </TabControl.Styles>
 
                     <!-- Tab: Risques & Recommandations -->
-                    <TabItem Header="Vulnérabilités">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="Vulnérabilités"/>
+                                <Border Background="#e74c3c" 
+                                        IsVisible="{Binding HasBootVulnerabilities}"
+                                        CornerRadius="10" Padding="6,1"
+                                        VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding BootBadgeCount}" 
+                                               FontSize="10" FontWeight="Bold" Foreground="White"/>
+                                </Border>
+                            </StackPanel>
+                        </TabItem.Header>
                         <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
                             <TextBlock Grid.Row="0" Text="Points d'attention détectés" FontWeight="Bold" Margin="0,0,0,15" Foreground="#34495e"/>
                             <ScrollViewer Grid.Row="1">
@@ -667,163 +1148,770 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <!-- Members -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Members'}" Spacing="15">
-                <DockPanel>
-                    <TextBlock Text="Gestion des Membres" FontSize="24" FontWeight="Bold" DockPanel.Dock="Left"/>
-                    <StackPanel Orientation="Horizontal" Spacing="10" DockPanel.Dock="Right">
-                        <TextBox Width="250" Watermark="Rechercher un membre..." Text="{Binding SearchText, Mode=TwoWay}" VerticalAlignment="Center"/>
-                        <Button Command="{Binding ToggleAddMemberFormCommand}" 
-                                Background="Transparent" 
-                                Padding="5">
-                            <PathIcon Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="24" Height="24" Foreground="#3498db"/>
-                        </Button>
-                    </StackPanel>
-                </DockPanel>
-
-                <TextBlock Text="Consultez et gérez la liste des membres inscrits dans le système." 
-                           TextWrapping="Wrap" 
-                           IsVisible="{Binding !IsAddingMember}"/>
-
-                <!-- Formulaire d'ajout/modification de membre -->
-                <Border Background="#fdfdfd" BorderBrush="#ecf0f1" BorderThickness="1" CornerRadius="8" Padding="15" IsVisible="{Binding IsAddingMember}">
-                    <StackPanel Spacing="10">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Modifier le membre" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNotNull}}"/>
-                            <TextBlock Text="Ajouter un nouveau membre" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNull}}"/>
-                        </StackPanel>
-                        
+            <!-- Members (Redesigned) -->
+            <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Members'}" RowDefinitions="Auto,*">
+                <!-- Header Card -->
+                <Border Grid.Row="0" Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,20" BoxShadow="0 4 12 0 #15000000">
+                    <Grid ColumnDefinitions="*,Auto">
                         <StackPanel Spacing="5">
-                            <TextBlock Text="Nom Complet :"/>
-                            <TextBox Text="{Binding MemberFullName}" Watermark="Ex: Abdellah" />
+                            <TextBlock Text="Gestion de l'Équipe" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
+                            <TextBlock Text="Gérez les membres autorisés à recevoir les partages de mots de passe." Foreground="#7f8c8d" FontSize="14"/>
                         </StackPanel>
-
-                        <StackPanel Spacing="5">
-                            <TextBlock Text="Email :"/>
-                            <TextBox Text="{Binding MemberEmail}" Watermark="Ex: abdellah@example.com" />
-                        </StackPanel>
-
-                        <UniformGrid Columns="2" Margin="0,10,0,0">
-                            <Button Content="Annuler" 
-                                    Command="{Binding ToggleAddMemberFormCommand}" 
-                                    HorizontalAlignment="Stretch" 
-                                    HorizontalContentAlignment="Center"
-                                    Margin="0,0,5,0" />
-                            <Button Command="{Binding SaveMemberCommand}" 
-                                    HorizontalAlignment="Stretch" 
-                                    HorizontalContentAlignment="Center"
-                                    Classes="accent"
-                                    Margin="5,0,0,0">
-                                <Panel>
-                                    <TextBlock Text="Mettre à jour" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNotNull}}"/>
-                                    <TextBlock Text="Ajouter" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNull}}"/>
-                                </Panel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+                            <TextBox Width="250" Watermark="Rechercher..." Text="{Binding SearchText, Mode=TwoWay}" CornerRadius="8" Height="40" VerticalContentAlignment="Center"/>
+                            <Button Command="{Binding ToggleAddMemberFormCommand}" 
+                                    Background="#3498db" 
+                                    Foreground="White"
+                                    Width="40" Height="40"
+                                    CornerRadius="20"
+                                    Padding="0"
+                                    ToolTip.Tip="Ajouter">
+                                <PathIcon Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
-                        </UniformGrid>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Members Content Area -->
+                <Grid Grid.Row="1">
+                    <!-- Add/Edit Form Overlay-like card -->
+                    <Border Background="White" CornerRadius="12" Padding="25" BoxShadow="0 10 30 0 #20000000" IsVisible="{Binding IsAddingMember}" MaxWidth="450" VerticalAlignment="Top" ZIndex="10">
+                        <StackPanel Spacing="20">
+                            <TextBlock Text="Informations du Membre" FontSize="20" FontWeight="Bold" Foreground="#2c3e50"/>
+                            <StackPanel Spacing="15">
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Nom Complet" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                    <TextBox Text="{Binding MemberFullName}" Watermark="Prénom Nom" CornerRadius="8" Height="40" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Email" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                    <TextBox Text="{Binding MemberEmail}" Watermark="email@exemple.com" CornerRadius="8" Height="40" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Grid ColumnDefinitions="*,*">
+                                <Button Grid.Column="0" Content="Annuler" Command="{Binding ToggleAddMemberFormCommand}" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="40" CornerRadius="8"/>
+                                <Button Grid.Column="1" Command="{Binding SaveMemberCommand}" Classes="accent" HorizontalAlignment="Stretch" Margin="5,0,0,0" Height="40" CornerRadius="8" HorizontalContentAlignment="Center">
+                                    <Panel>
+                                        <TextBlock Text="Mettre à jour" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                                        <TextBlock Text="Enregistrer" IsVisible="{Binding EditingMember, Converter={x:Static ObjectConverters.IsNull}}"/>
+                                    </Panel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Members List Table -->
+                    <Border Background="White" CornerRadius="12" BoxShadow="0 2 8 0 #08000000" ClipToBounds="True">
+                        <DataGrid ItemsSource="{Binding MembersList}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" RowHeight="60">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Membre" Width="*">
+                                    <DataTemplate DataType="models:Member">
+                                        <StackPanel Orientation="Horizontal" Spacing="15" Margin="15,0">
+                                            <Border Width="36" Height="36" Background="#ebf5ff" CornerRadius="18">
+                                                <PathIcon Data="{StaticResource IconProfile}" Width="16" Height="16" Foreground="#3498db" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <TextBlock Text="{Binding Fullname}" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Email de contact" Binding="{Binding Mail}" Width="*" />
+                                <DataGridTemplateColumn Header="Actions" Width="150">
+                                    <DataTemplate DataType="models:Member">
+                                        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                                            <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).UpdateMemberCommand}" CommandParameter="{Binding}" Background="Transparent" Padding="5">
+                                                <PathIcon Data="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" Width="16" Height="16" Foreground="#3498db"/>
+                                            </Button>
+                                            <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).DeleteMemberCommand}" CommandParameter="{Binding}" Background="Transparent" Padding="5">
+                                                <PathIcon Data="{StaticResource IconDelete}" Width="16" Height="16" Foreground="#e74c3c"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <!-- Profil Page -->
+            <ScrollViewer IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Profil'}">
+                <StackPanel Spacing="30" Margin="30">
+                    <TextBlock Text="Mon Profil" FontSize="32" FontWeight="Black" Foreground="#2c3e50"/>
+                    
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30">
+                        <!-- User Information Card -->
+                        <Border Grid.Column="0" Background="White" CornerRadius="16" Padding="25" BoxShadow="0 4 12 0 #15000000">
+                            <StackPanel Spacing="20">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <StackPanel Orientation="Horizontal" Spacing="15">
+                                        <Border Background="#3498db" Width="50" Height="50" CornerRadius="25">
+                                            <PathIcon Data="{StaticResource IconProfile}" Foreground="White" Width="24" Height="24"/>
+                                        </Border>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock Text="Informations Personnelles" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                                            <TextBlock Text="Vos détails de compte" FontSize="12" Foreground="#7f8c8d"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    
+                                    <Button Grid.Column="1" Command="{Binding StartEditProfileCommand}" 
+                                            IsVisible="{Binding !IsEditingProfile}"
+                                            Padding="10,5" Background="Transparent" BorderThickness="0">
+                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <PathIcon Data="{StaticResource IconEdit}" Width="14" Height="14" Foreground="#3498db"/>
+                                            <TextBlock Text="Modifier" Foreground="#3498db" FontSize="12" FontWeight="SemiBold"/>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                                
+                                <Rectangle Height="1" Fill="#f0f0f0"/>
+                                
+                                <!-- View Mode -->
+                                <StackPanel Spacing="15" IsVisible="{Binding !IsEditingProfile}">
+                                    <StackPanel>
+                                        <TextBlock Text="NOM COMPLET" FontSize="10" FontWeight="Bold" Foreground="#bdc3c7" Margin="0,0,0,5"/>
+                                        <TextBlock Text="{Binding CurrentUserFullName}" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel>
+                                        <TextBlock Text="ADRESSE EMAIL" FontSize="10" FontWeight="Bold" Foreground="#bdc3c7" Margin="0,0,0,5"/>
+                                        <TextBlock Text="{Binding CurrentUserEmail}" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel>
+                                        <TextBlock Text="NUMÉRO DE TÉLÉPHONE" FontSize="10" FontWeight="Bold" Foreground="#bdc3c7" Margin="0,0,0,5"/>
+                                        <TextBlock Text="{Binding CurrentUserPhone}" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- Edit Mode -->
+                                <StackPanel Spacing="15" IsVisible="{Binding IsEditingProfile}">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Nom Complet" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                        <TextBox Text="{Binding EditFullName}" Height="40" CornerRadius="8"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Téléphone" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                        <TextBox Text="{Binding EditTelephone}" Height="40" CornerRadius="8"/>
+                                    </StackPanel>
+
+                                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,10,0,0">
+                                        <Button Grid.Column="0" Content="Enregistrer" 
+                                                Command="{Binding UpdateProfileCommand}"
+                                                Classes="accent" Height="40" HorizontalAlignment="Stretch"
+                                                HorizontalContentAlignment="Center" CornerRadius="8"/>
+                                        <Button Grid.Column="1" Content="Annuler" 
+                                                Command="{Binding CancelEditProfileCommand}"
+                                                Height="40" HorizontalAlignment="Stretch"
+                                                HorizontalContentAlignment="Center" CornerRadius="8"/>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Change Password Card -->
+                        <Border Grid.Column="1" Background="White" CornerRadius="16" Padding="25" BoxShadow="0 4 12 0 #15000000">
+                            <StackPanel Spacing="20">
+                                <StackPanel Orientation="Horizontal" Spacing="15">
+                                    <Border Background="#e67e22" Width="50" Height="50" CornerRadius="25">
+                                        <PathIcon Data="{StaticResource IconPassword}" Foreground="White" Width="24" Height="24"/>
+                                    </Border>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="Sécurité" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                                        <TextBlock Text="Modifier votre mot de passe" FontSize="12" Foreground="#7f8c8d"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <Rectangle Height="1" Fill="#f0f0f0"/>
+                                
+                                <StackPanel Spacing="15">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Ancien mot de passe" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                        <TextBox PasswordChar="*" Text="{Binding OldPassword}" Height="40" CornerRadius="8"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Nouveau mot de passe" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                        <TextBox PasswordChar="*" Text="{Binding NewPassword}" Height="40" CornerRadius="8"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Confirmer le nouveau mot de passe" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                                        <TextBox PasswordChar="*" Text="{Binding ConfirmPassword}" Height="40" CornerRadius="8"/>
+                                    </StackPanel>
+                                    
+                                    <TextBlock Text="{Binding ProfileStatusMessage}" FontSize="12" Foreground="#e74c3c" HorizontalAlignment="Center"/>
+                                    
+                                    <Button Content="Mettre à jour le mot de passe" 
+                                            Command="{Binding UpdatePasswordCommand}"
+                                            Classes="accent" Height="45" HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                            CornerRadius="8" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Réglages -->
+            <ScrollViewer IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Réglages'}">
+                <StackPanel Margin="0,0,20,0">
+                <Border Background="White" CornerRadius="12" Padding="20" BoxShadow="0 2 8 0 #08000000">
+                    <StackPanel Spacing="15">
+                        <TextBlock Text="Gestionnaire de Mots de Passe" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
+                        
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Génération aléatoire" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Afficher le bouton de génération de mot de passe aléatoire." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding IsRandomPasswordEnabled}" OnContent="Activé" OffContent="Désactivé"/>
+                        </Grid>
+
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Afficher le résultat chiffré" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Afficher ou masquer le champ du résultat après chiffrement." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding IsEncryptedResultVisible}" OnContent="Activé" OffContent="Désactivé"/>
+                        </Grid>
                     </StackPanel>
                 </Border>
 
-                <!-- Liste des membres -->
-                <DataGrid ItemsSource="{Binding MembersList}"
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          GridLinesVisibility="All"
-                          BorderThickness="1"
-                          BorderBrush="#ecf0f1"
-                          Height="400"
-                          IsVisible="{Binding !IsAddingMember}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nom Complet" Binding="{Binding Fullname}" Width="*" />
-                        <DataGridTextColumn Header="Email" Binding="{Binding Mail}" Width="*" />
-                        <DataGridTemplateColumn Header="Actions" Width="180">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate DataType="models:Member">
-                                    <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
-                                        <Button Content="Modifier" 
-                                                Command="{Binding $parent[DataGrid].((vm:MainWindowViewModel)DataContext).UpdateMemberCommand}"
-                                                CommandParameter="{Binding}"
-                                                Padding="10,5"
-                                                FontSize="12"/>
-                                        <Button Content="Supprimer" 
-                                                Command="{Binding $parent[DataGrid].((vm:MainWindowViewModel)DataContext).DeleteMemberCommand}"
-                                                CommandParameter="{Binding}"
-                                                Background="#e74c3c"
-                                                Foreground="White"
-                                                Padding="10,5"
-                                                FontSize="12"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Border Background="White" CornerRadius="12" Padding="20" BoxShadow="0 2 8 0 #08000000" Margin="0,20,0,0">
+                    <StackPanel Spacing="15">
+                        <TextBlock Text="Antivirus" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
+                        
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Suppression de l'historique" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Définir la fréquence de suppression automatique de l'historique des scans." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ComboBox Grid.Column="1" 
+                                      ItemsSource="{Binding ScanHistoryCleanupOptions}"
+                                      SelectedItem="{Binding ScanHistoryCleanupMode}" 
+                                      Width="150" />
+                        </Grid>
 
-                <TextBlock Text="{Binding StatusMessage}" 
-                           TextWrapping="Wrap" 
-                           HorizontalAlignment="Center" 
-                           Foreground="Gray"
-                           Margin="0,10,0,0"/>
-            </StackPanel>
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
 
-            <!-- Profil -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Profil'}">
-                <TextBlock Text="Mon Profil" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Consultez et modifiez vos informations personnelles ici." TextWrapping="Wrap"/>
-            </StackPanel>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Chemin de restauration personnalisé" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Utiliser un dossier spécifique pour les fichiers restaurés." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding UseCustomRestorePath}" OnContent="Activé" OffContent="Désactivé"/>
+                        </Grid>
 
-            <!-- Réglages -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Réglages'}">
-                <TextBlock Text="Réglages" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Personnalisez le comportement de l'application selon vos préférences." TextWrapping="Wrap"/>
+                        <StackPanel IsVisible="{Binding UseCustomRestorePath}" Spacing="5">
+                            <TextBlock Text="Chemin de destination" FontSize="12" FontWeight="SemiBold" Foreground="#34495e"/>
+                            <TextBox Text="{Binding CustomRestorePath}" Watermark="Ex: /home/user/restored" Classes="Modern"/>
+                        </StackPanel>
+
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Activer l'analyse AI" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Permettre à l'IA d'expliquer les menaces détectées." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding IsAIAnalysisEnabled}" OnContent="Activé" OffContent="Désactivé"/>
+                        </Grid>
+
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Activer l'analyse en temps réel" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Surveiller les modifications de fichiers en direct." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding IsRealtimeAnalysisEnabled}" OnContent="Activé" OffContent="Désactivé"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Coffre-fort Settings -->
+                <Border Background="White" CornerRadius="12" Padding="20" BoxShadow="0 2 8 0 #08000000" Margin="0,20,0,0">
+                    <StackPanel Spacing="15">
+                        <TextBlock Text="Coffre-fort" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Exiger mot de passe (Suppression)" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Demander votre mot de passe pour supprimer un fichier." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding RequirePasswordForDelete}" OnContent="Oui" OffContent="Non"/>
+                        </Grid>
+
+                        <Rectangle Height="1" Fill="#f0f0f0"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Exiger mot de passe (Ouverture)" FontWeight="SemiBold" Foreground="#34495e"/>
+                                <TextBlock Text="Demander votre mot de passe pour télécharger ou ouvrir un fichier." FontSize="12" Foreground="#7f8c8d"/>
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding RequirePasswordForDownload}" OnContent="Oui" OffContent="Non"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
             </StackPanel>
+        </ScrollViewer>
 
             <!-- Contact Support -->
-            <StackPanel IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Contact Support'}">
-                <TextBlock Text="Contact Support" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Une question ? Un problème ? Notre équipe technique est à votre disposition." TextWrapping="Wrap"/>
-            </StackPanel>
+            <ScrollViewer IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Contact Support'}">
+                <StackPanel Spacing="30" Margin="0,0,20,0">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Support &amp; Documentation" FontSize="28" FontWeight="Bold" Foreground="#2c3e50"/>
+                        <TextBlock Text="Comprenez le fonctionnement de votre suite de sécurité et trouvez des réponses à vos questions." FontSize="14" Foreground="#7f8c8d"/>
+                    </StackPanel>
+
+                    <!-- Technical Overview -->
+                    <Border Background="#f8f9fa" CornerRadius="12" Padding="25">
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="🛡️ Comment fonctionne l'application ?" FontSize="20" FontWeight="Bold" Foreground="#2c3e50"/>
+                            
+                            <Grid ColumnDefinitions="*,*">
+                                <StackPanel Grid.Column="0" Spacing="15" Margin="0,0,20,0">
+                                    <TextBlock Text="Password Manager" FontWeight="Bold" Foreground="#3498db"/>
+                                    <TextBlock Text="Utilise l'algorithme AES-GCM 256 bits pour chiffrer vos données localement. La clé de déchiffrement n'est jamais stockée en clair sur le serveur." FontSize="13" Foreground="#34495e" TextWrapping="Wrap"/>
+                                    
+                                    <TextBlock Text="Antivirus Shield" FontWeight="Bold" Foreground="#e74c3c" Margin="0,10,0,0"/>
+                                    <TextBlock Text="Un moteur hybride qui combine l'analyse de signatures (SHA-256) et l'analyse heuristique (entropie et détection de comportements suspects) via un binaire C optimisé." FontSize="13" Foreground="#34495e" TextWrapping="Wrap"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Spacing="15">
+                                    <TextBlock Text="Audit de Sécurité (Boot)" FontWeight="Bold" Foreground="#27ae60"/>
+                                    <TextBlock Text="Scanne les points d'entrée système, les ports ouverts et les configurations réseau pour détecter les vulnérabilités de l'OS." FontSize="13" Foreground="#34495e" TextWrapping="Wrap"/>
+                                    
+                                    <TextBlock Text="QR Sharing" FontWeight="Bold" Foreground="#8e44ad" Margin="0,10,0,0"/>
+                                    <TextBlock Text="Le partage sécurisé utilise des codes QR pour transférer temporairement les accès sans passage par des serveurs tiers non chiffrés." FontSize="13" Foreground="#34495e" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- FAQ Section -->
+                    <StackPanel Spacing="20">
+                        <TextBlock Text="❓ Questions Fréquentes" FontSize="20" FontWeight="Bold" Foreground="#2c3e50"/>
+                        
+                        <ItemsControl>
+                            <!-- Q1 -->
+                            <Border Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10" BoxShadow="0 2 8 0 #08000000">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Pourquoi mon fichier est-il marqué comme 'MALWARE' ?" FontWeight="Bold" Foreground="#2c3e50"/>
+                                    <TextBlock Text="Cela signifie que le scan a détecté une signature connue de virus ou que le fichier présente une entropie anormalement élevée, typique des ransomwares." FontSize="13" Foreground="#7f8c8d" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Q2 -->
+                            <Border Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10" BoxShadow="0 2 8 0 #08000000">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Comment restaurer un fichier mis en quarantaine ?" FontWeight="Bold" Foreground="#2c3e50"/>
+                                    <TextBlock Text="Allez dans Antivirus > Quarantaine. Cliquez sur 'Restaurer'. Le fichier retournera automatiquement à son emplacement d'origine." FontSize="13" Foreground="#7f8c8d" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Q3 -->
+                            <Border Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10" BoxShadow="0 2 8 0 #08000000">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="Que faire si j'oublie mon mot de passe maître ?" FontWeight="Bold" Foreground="#2c3e50"/>
+                                    <TextBlock Text="Utilisez la fonction 'Mot de passe oublié' sur l'écran de connexion. Un code de récupération sera envoyé à votre email enregistré." FontSize="13" Foreground="#7f8c8d" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <!-- Tips Section -->
+                    <Border Background="#ebf5ff" CornerRadius="12" Padding="25" BorderBrush="#d0e8ff" BorderThickness="1">
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="💡 Conseils &amp; Bonnes Pratiques" FontSize="20" FontWeight="Bold" Foreground="#2980b9"/>
+                            
+                            <!-- Tip 1 -->
+                            <Grid ColumnDefinitions="Auto,*" Margin="0,5">
+                                <Ellipse Grid.Column="0" Width="6" Height="6" Fill="#2980b9" VerticalAlignment="Top" Margin="0,6,0,0"/>
+                                <TextBlock Grid.Column="1" Text="Changez régulièrement votre mot de passe maître (tous les 3 à 6 mois)." Margin="12,0,0,0" Foreground="#34495e" TextWrapping="Wrap"/>
+                            </Grid>
+
+                            <!-- Tip 2 -->
+                            <Grid ColumnDefinitions="Auto,*" Margin="0,5">
+                                <Ellipse Grid.Column="0" Width="6" Height="6" Fill="#2980b9" VerticalAlignment="Top" Margin="0,6,0,0"/>
+                                <TextBlock Grid.Column="1" Text="Lancez un 'Audit de Sécurité' après chaque mise à jour majeure de votre système." Margin="12,0,0,0" Foreground="#34495e" TextWrapping="Wrap"/>
+                            </Grid>
+
+                            <!-- Tip 3 -->
+                            <Grid ColumnDefinitions="Auto,*" Margin="0,5">
+                                <Ellipse Grid.Column="0" Width="6" Height="6" Fill="#2980b9" VerticalAlignment="Top" Margin="0,6,0,0"/>
+                                <TextBlock Grid.Column="1" Text="Méfiez-vous des fichiers suspects même s'ils semblent inoffensifs." Margin="12,0,0,0" Foreground="#34495e" TextWrapping="Wrap"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    
+                    <StackPanel HorizontalAlignment="Center" Margin="0,20,0,20">
+                        <TextBlock Text="Besoin d'aide supplémentaire ?" Foreground="#7f8c8d"/>
+                        <TextBlock Text="support@cryptonsuite.com" Foreground="#3498db" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
 
-        <!-- Overlay Layer for Popups -->
-        <Panel Grid.ColumnSpan="2" IsVisible="{Binding IsSharePopupVisible}" Background="#40000000">
-            <Border Background="White" CornerRadius="12" Padding="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" BoxShadow="0 8 24 0 #40000000">
-                <StackPanel Spacing="20">
-                    <TextBlock Text="Partage de mot de passe" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Voulez-vous partager ce mot de passe avec des membres ?" TextAlignment="Center" TextWrapping="Wrap"/>
-                    <UniformGrid Columns="2" Margin="0,10,0,0">
-                        <Button Content="Non" Command="{Binding NoShareCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
-                        <Button Content="Oui" Command="{Binding YesShareCommand}" Classes="accent" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,0,0,0"/>
-                    </UniformGrid>
+        <!-- Overlay Layer for Popups (Shared styling with other modules) -->
+        <Panel Grid.ColumnSpan="2" IsVisible="{Binding IsSharePopupVisible}" Background="#60000000">
+            <Border Background="White" CornerRadius="16" Padding="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="420" BoxShadow="0 15 35 0 #60000000">
+                <StackPanel Spacing="25">
+                    <StackPanel Spacing="10">
+                        <PathIcon Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.11,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M9,6A3,3 0 0,1 12,3A3,3 0 0,1 15,6V8H9V6Z" 
+                                  Width="32" Height="32" Foreground="#3498db" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Partage Sécurisé" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#2c3e50"/>
+                    </StackPanel>
+                    
+                    <TextBlock Text="Voulez-vous partager ce mot de passe généré avec d'autres membres de l'équipe ?" 
+                               TextAlignment="Center" 
+                               TextWrapping="Wrap" 
+                               Foreground="#7f8c8d" 
+                               FontSize="14"
+                               LineHeight="20"/>
+                    
+                    <Grid ColumnDefinitions="*,*">
+                        <Button Grid.Column="0" Content="Non, merci" 
+                                Command="{Binding NoShareCommand}" 
+                                HorizontalAlignment="Stretch" 
+                                Height="40"
+                                CornerRadius="8"
+                                Margin="0,0,7,0"
+                                HorizontalContentAlignment="Center"/>
+                        <Button Grid.Column="1" Content="Oui, Partager" 
+                                Command="{Binding YesShareCommand}" 
+                                Classes="accent" 
+                                HorizontalAlignment="Stretch" 
+                                Height="40"
+                                CornerRadius="8"
+                                Margin="7,0,0,0"
+                                HorizontalContentAlignment="Center"/>
+                    </Grid>
                 </StackPanel>
             </Border>
         </Panel>
 
-        <Panel Grid.ColumnSpan="2" IsVisible="{Binding IsMemberSelectionVisible}" Background="#40000000">
-            <Border Background="White" CornerRadius="12" Padding="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500" MaxHeight="600" BoxShadow="0 8 24 0 #40000000">
+        <Panel Grid.ColumnSpan="2" IsVisible="{Binding IsMemberSelectionVisible}" Background="#60000000">
+            <Border Background="White" CornerRadius="16" Padding="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="550" MaxHeight="650" BoxShadow="0 15 35 0 #60000000">
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Top" Text="Sélectionner les membres" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
-                    <StackPanel DockPanel.Dock="Bottom" Spacing="10" Margin="0,15,0,0">
-                        <UniformGrid Columns="2">
-                            <Button Content="Annuler" Command="{Binding CancelSharingCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
-                            <Button Content="Partager" Command="{Binding SendSharingCommand}" Classes="accent" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,0,0,0"/>
-                        </UniformGrid>
-                    </StackPanel>
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding MemberSelectionList}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate DataType="models:MemberSelection">
-                                    <CheckBox IsChecked="{Binding IsSelected}" Margin="0,5">
-                                        <StackPanel Orientation="Horizontal" Spacing="10">
-                                            <TextBlock Text="{Binding Member.Fullname}" FontWeight="Bold"/>
-                                            <TextBlock Text="{Binding Member.Mail}" Foreground="Gray" FontSize="12" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </CheckBox>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
+                    <TextBlock DockPanel.Dock="Top" Text="Sélectionner les destinataires" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="#2c3e50"/>
+                    
+                    <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*,*" Margin="0,20,0,0">
+                        <Button Grid.Column="0" Content="Annuler" 
+                                Command="{Binding CancelSharingCommand}" 
+                                HorizontalAlignment="Stretch" 
+                                Height="40"
+                                CornerRadius="8"
+                                Margin="0,0,7,0"
+                                HorizontalContentAlignment="Center"/>
+                        <Button Grid.Column="1" Content="Envoyer maintenant" 
+                                Command="{Binding SendSharingCommand}" 
+                                Classes="accent" 
+                                HorizontalAlignment="Stretch" 
+                                Height="40"
+                                CornerRadius="8"
+                                Margin="7,0,0,0"
+                                HorizontalContentAlignment="Center"/>
+                    </Grid>
+
+                    <Border BorderBrush="#ecf0f1" BorderThickness="1" CornerRadius="12" ClipToBounds="True">
+                        <ScrollViewer>
+                            <ItemsControl ItemsSource="{Binding MemberSelectionList}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="models:MemberSelection">
+                                        <Border BorderBrush="#f8f9fa" BorderThickness="0,0,0,1" Padding="15,10">
+                                            <CheckBox IsChecked="{Binding IsSelected}" HorizontalAlignment="Stretch">
+                                                <Grid ColumnDefinitions="Auto,*" Margin="10,0,0,0">
+                                                    <Border Grid.Column="0" Width="36" Height="36" Background="#3498db" Opacity="0.1" CornerRadius="18" Margin="0,0,12,0">
+                                                        <PathIcon Data="{StaticResource IconProfile}" Width="16" Height="16" Foreground="#3498db" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding Member.Fullname}" FontWeight="Bold" Foreground="#2c3e50"/>
+                                                        <TextBlock Text="{Binding Member.Mail}" Foreground="#95a5a6" FontSize="11"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </CheckBox>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Border>
                 </DockPanel>
             </Border>
         </Panel>
-    </Grid>
+        </Grid>
+
+        <!-- Authentication Overlay (Signup / Login) -->
+        <Border IsVisible="{Binding IsAuthRequired}" Background="#f0f2f5" ZIndex="100">
+            <Panel>
+                <!-- Decorative Background -->
+                <Canvas Opacity="0.1">
+                    <Ellipse Width="600" Height="600" Fill="#3498db" Canvas.Left="-100" Canvas.Top="-100"/>
+                    <Ellipse Width="400" Height="400" Fill="#2c3e50" Canvas.Right="-50" Canvas.Bottom="-50"/>
+                </Canvas>
+
+                <Border Background="White" CornerRadius="24" Padding="40" 
+                        VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        Width="450" BoxShadow="0 20 50 0 #30000000">
+                    <Panel>
+                        <!-- Standard Auth Flow (Login / Signup) -->
+                        <StackPanel Spacing="25" IsVisible="{Binding !IsResetMode}">
+                            <!-- Header -->
+                            <StackPanel Spacing="10" HorizontalAlignment="Center">
+                                <Border Background="#2c3e50" Width="64" Height="64" CornerRadius="32" HorizontalAlignment="Center">
+                                    <PathIcon Data="{StaticResource IconPassword}" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <TextBlock Text="Crypton Suite" FontSize="28" FontWeight="Black" HorizontalAlignment="Center" Foreground="#2c3e50"/>
+                                <TextBlock Text="{Binding AuthMode, StringFormat='\{0\} - Sécurisez votre accès'}" 
+                                           FontSize="14" Foreground="#7f8c8d" HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                            <!-- Form Fields -->
+                            <StackPanel Spacing="15">
+                                <StackPanel Spacing="15" IsVisible="{Binding !IsEmailVerificationPending}">
+                                    <!-- FullName (Signup Only) -->
+                                    <StackPanel Spacing="5" IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Signup'}">
+                                        <TextBlock Text="Nom Complet" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                        <TextBox Watermark="Ex: Abdellah" Text="{Binding AuthFullName}" Height="45" CornerRadius="8"/>
+                                    </StackPanel>
+
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Email" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                        <TextBox Watermark="email@exemple.com" Text="{Binding AuthEmail}" Height="45" CornerRadius="8"/>
+                                    </StackPanel>
+
+                                    <!-- Telephone (Signup Only) -->
+                                    <StackPanel Spacing="5" IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Signup'}">
+                                        <TextBlock Text="Téléphone (Optionnel)" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                        <TextBox Watermark="+212 ..." Text="{Binding AuthTelephone}" Height="45" CornerRadius="8"/>
+                                    </StackPanel>
+
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Mot de passe" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                        <TextBox Watermark="••••••••" PasswordChar="●" Text="{Binding AuthPassword}" Height="45" CornerRadius="8"/>
+                                        <Button Command="{Binding SwitchToResetModeCommand}" 
+                                                IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Login'}"
+                                                Background="Transparent" HorizontalAlignment="Right" Padding="0">
+                                            <TextBlock Text="Mot de passe oublié ?" FontSize="11" Foreground="#3498db" TextDecorations="Underline"/>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- Email Verification Code (Signup Only) -->
+                                <StackPanel Spacing="5" IsVisible="{Binding IsEmailVerificationPending}">
+                                    <TextBlock Text="Code de vérification reçu par email" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                    <TextBox Watermark="123456" Text="{Binding AuthVerificationCode}" MaxLength="6" Height="45" CornerRadius="8" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Action Button -->
+                            <Panel>
+                                <Button Content="Se connecter" 
+                                        IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Login'}"
+                                        Command="{Binding LoginCommand}"
+                                        Classes="accent" Height="50" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                        CornerRadius="10" FontWeight="Bold" FontSize="16"/>
+                                <Button IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Signup'}"
+                                        Command="{Binding SignupCommand}"
+                                        Classes="accent" Height="50" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                        CornerRadius="10" FontWeight="Bold" FontSize="16">
+                                    <Panel>
+                                        <TextBlock Text="Créer mon compte" IsVisible="{Binding !IsEmailVerificationPending}"/>
+                                        <TextBlock Text="Vérifier le code" IsVisible="{Binding IsEmailVerificationPending}"/>
+                                    </Panel>
+                                </Button>
+                            </Panel>
+
+                            <!-- Status Message -->
+                            <TextBlock Text="{Binding StatusMessage}" Foreground="#e74c3c" FontSize="13" TextAlignment="Center" TextWrapping="Wrap" MinHeight="20"/>
+
+                            <!-- Switch Mode -->
+                            <Button Background="Transparent" HorizontalAlignment="Center" Command="{Binding SwitchAuthModeCommand}">
+                                <Panel>
+                                    <TextBlock Text="Pas de compte ? S'inscrire" 
+                                               IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Login'}"
+                                               TextDecorations="Underline" FontSize="13" Foreground="#3498db"/>
+                                    <TextBlock Text="Déjà un compte ? Se connecter" 
+                                               IsVisible="{Binding AuthMode, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Signup'}"
+                                               TextDecorations="Underline" FontSize="13" Foreground="#3498db"/>
+                                </Panel>
+                            </Button>
+                        </StackPanel>
+
+                        <!-- Forgot Password Flow -->
+                        <StackPanel Spacing="25" IsVisible="{Binding IsResetMode}">
+                            <!-- Header -->
+                            <StackPanel Spacing="10" HorizontalAlignment="Center">
+                                <Border Background="#3498db" Width="64" Height="64" CornerRadius="32" HorizontalAlignment="Center">
+                                    <PathIcon Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,15.9C9.11,15.9 5.9,17.23 5.9,18V18.1H18.1V18C18.1,17.23 14.89,15.9 12,15.9Z" 
+                                              Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <TextBlock Text="Réinitialisation" FontSize="24" FontWeight="Black" HorizontalAlignment="Center" Foreground="#2c3e50"/>
+                                <TextBlock Text="Suivez les étapes pour réinitialiser" FontSize="13" Foreground="#7f8c8d" HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="15">
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Email du compte" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBox Watermark="Récupération..." Text="{Binding ResetEmail}" Height="45" CornerRadius="8,0,0,8"/>
+                                        <Button Grid.Column="1" Content="Envoyer" Command="{Binding SendForgotCodeCommand}" 
+                                                Classes="accent" Height="45" CornerRadius="0,8,8,0" Padding="10,0"/>
+                                    </Grid>
+                                </StackPanel>
+
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Code à 6 chiffres" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                    <TextBox Watermark="123456" Text="{Binding ResetCode}" MaxLength="6" Height="45" CornerRadius="8" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                                </StackPanel>
+
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Nouveau mot de passe" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                    <TextBox Watermark="••••••••" PasswordChar="●" Text="{Binding ResetNewPassword}" Height="45" CornerRadius="8"/>
+                                </StackPanel>
+
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Confirmer" FontWeight="SemiBold" FontSize="12" Foreground="#34495e"/>
+                                    <TextBox Watermark="••••••••" PasswordChar="●" Text="{Binding ResetConfirmPassword}" Height="45" CornerRadius="8"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Spacing="15">
+                                <Button Content="Changer le mot de passe" Command="{Binding ResetWithCodeCommand}"
+                                        Classes="accent" Height="50" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                        CornerRadius="10" FontWeight="Bold" FontSize="16"/>
+                                
+                                <Button Content="Retour à la connexion" Command="{Binding CancelResetModeCommand}"
+                                        Background="Transparent" HorizontalAlignment="Center">
+                                    <TextBlock Text="Annuler" FontSize="13" Foreground="#7f8c8d" TextDecorations="Underline"/>
+                                </Button>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding StatusMessage}" Foreground="#e74c3c" FontSize="13" TextAlignment="Center" TextWrapping="Wrap" MinHeight="20"/>
+                        </StackPanel>
+                    </Panel>
+                </Border>
+
+                <!-- Loading Overlay -->
+                <Border Background="#A0FFFFFF" IsVisible="{Binding IsAuthLoading}">
+                    <StackPanel VerticalAlignment="Center" Spacing="10">
+                        <ProgressBar IsIndeterminate="True" Width="200" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Traitement en cours..." HorizontalAlignment="Center" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+            </Panel>
+        </Border>
+
+        <!-- Modal Overlay: Real-time Events List -->
+        <Grid Grid.ColumnSpan="2" Background="#80000000" IsVisible="{Binding IsRealtimeEventsPopupVisible}">
+            <Border Background="White" CornerRadius="16" Width="800" Height="550" HorizontalAlignment="Center" VerticalAlignment="Center" BoxShadow="0 10 30 0 #40000000">
+                <Border Padding="25">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                    <!-- Header -->
+                    <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,20">
+                        <StackPanel Orientation="Horizontal" Spacing="15">
+                            <PathIcon Data="{StaticResource IconActivity}" Width="28" Height="28" Foreground="#2ecc71"/>
+                            <TextBlock Text="Historique de Surveillance en Temps Réel" FontSize="22" FontWeight="Black" VerticalAlignment="Center" Foreground="#2c3e50"/>
+                        </StackPanel>
+                        <Button Grid.Column="1" Command="{Binding CloseRealtimeEventsCommand}" Background="Transparent" Padding="5">
+                            <PathIcon Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Width="24" Height="24" Foreground="#95a5a6"/>
+                        </Button>
+                    </Grid>
+
+                    <!-- Content -->
+                    <Border Grid.Row="1" Background="#f8f9fa" CornerRadius="12" Padding="2">
+                        <DataGrid ItemsSource="{Binding RealtimeEventsList}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Statut" Width="Auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate DataType="models:RealtimeEvent">
+                                            <TextBlock Text="{Binding Result}" FontWeight="Bold" Margin="10,0">
+                                                <TextBlock.Styles>
+                                                    <Style Selector="TextBlock[Text=MALWARE]">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </Style>
+                                                    <Style Selector="TextBlock[Text=CLEAN]">
+                                                        <Setter Property="Foreground" Value="LimeGreen"/>
+                                                    </Style>
+                                                    <Style Selector="TextBlock[Text=SUSPICIOUS]">
+                                                        <Setter Property="Foreground" Value="Orange"/>
+                                                    </Style>
+                                                </TextBlock.Styles>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Fichier" Binding="{Binding FileName}" Width="2*"/>
+                                <DataGridTextColumn Header="Chemin" Binding="{Binding FilePath}" Width="3*"/>
+                                <DataGridTextColumn Header="Heure" Binding="{Binding Timestamp}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+
+                    <!-- Footer -->
+                    <Button Grid.Row="2" Content="Fermer" Command="{Binding CloseRealtimeEventsCommand}" 
+                            HorizontalAlignment="Right" Margin="0,20,0,0"
+                            Background="#2c3e50" Foreground="White" Padding="25,10" CornerRadius="8"/>
+                    </Grid>
+                </Border>
+            </Border>
+        </Grid>
+        <!-- Modal Overlay: AI Explanation -->
+        <Grid Grid.ColumnSpan="2" Background="#80000000" IsVisible="{Binding IsAIExplanationPopupVisible}">
+            <Border Background="White" CornerRadius="16" Width="650" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center" BoxShadow="0 10 30 0 #40000000">
+                <Border Padding="25">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <!-- Header -->
+                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,20">
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <PathIcon Data="{StaticResource IconAntivirus}" Width="28" Height="28" Foreground="#3498db"/>
+                                <TextBlock Text="Analyse de Menace par l'IA" FontSize="22" FontWeight="Black" VerticalAlignment="Center" Foreground="#2c3e50"/>
+                            </StackPanel>
+                            <Button Grid.Column="1" Command="{Binding CloseAIExplanationCommand}" Background="Transparent" Padding="5">
+                                <PathIcon Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" Width="24" Height="24" Foreground="#95a5a6"/>
+                            </Button>
+                        </Grid>
+
+                        <!-- Content -->
+                        <ScrollViewer Grid.Row="1" Background="#f8f9fa" CornerRadius="12" Padding="20">
+                            <StackPanel Spacing="15">
+                                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsAIAnalyzing}" Height="4" Margin="0,0,0,10" Foreground="#3498db"/>
+                                <SelectableTextBlock Text="{Binding AIExplanationText}" 
+                                                   TextWrapping="Wrap" 
+                                                   FontSize="15" 
+                                                   LineHeight="24" 
+                                                   Foreground="#34495e"/>
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <!-- Footer -->
+                        <Button Grid.Row="2" Content="Fermer" Command="{Binding CloseAIExplanationCommand}" 
+                                HorizontalAlignment="Right" Margin="0,20,0,0"
+                                Background="#3498db" Foreground="White" Padding="25,10" CornerRadius="8"/>
+                    </Grid>
+                </Border>
+            </Border>
+        </Grid>
+
+        <!-- Logout Confirmation Overlay -->
+        <Border Background="#80000000" IsVisible="{Binding IsLogoutConfirmationVisible}" ZIndex="1000">
+            <Border Background="White" CornerRadius="12" Padding="30" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" BoxShadow="0 10 30 0 #40000000">
+                <StackPanel Spacing="20">
+                    <PathIcon Data="{StaticResource IconLogout}" Width="50" Height="50" Foreground="#e74c3c" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Déconnexion" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#2c3e50"/>
+                    <TextBlock Text="Voulez-vous vraiment vous déconnecter ?" TextAlignment="Center" Foreground="#7f8c8d" TextWrapping="Wrap"/>
+                    <Grid ColumnDefinitions="*,*" Margin="0,10,0,0">
+                        <Button Grid.Column="0" Content="Annuler" Command="{Binding ToggleLogoutConfirmationCommand}" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="40" Background="#ecf0f1" Foreground="#2c3e50" CornerRadius="8" HorizontalContentAlignment="Center"/>
+                        <Button Grid.Column="1" Content="Déconnecter" Command="{Binding LogoutCommand}" HorizontalAlignment="Stretch" Margin="5,0,0,0" Height="40" Background="#e74c3c" Foreground="White" CornerRadius="8" HorizontalContentAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Panel>
 </Window>
