@@ -11,6 +11,8 @@
         <conv:BooleanToBrushConverter x:Key="BooleanToBrushConverter" />
         <conv:BooleanNegationConverter x:Key="BooleanNegationConverter" />
         <conv:ResultToBrushConverter x:Key="ResultToBrushConverter" />
+        <conv:LevelToColorConverter x:Key="LevelToColorConverter" />
+        <conv:StatusToColorConverter x:Key="StatusToColorConverter" />
     </Application.Resources>
 
     <Application.DataTemplates>

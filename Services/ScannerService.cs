@@ -323,4 +323,59 @@ public class ScannerService
         }
         catch { return null; }
     }
+
+    // --- SSH Remote Scan Methods ---
+
+    public async Task<string?> TestSSHConnectionAsync(string host, int port, string username, string password)
+    {
+        try
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(new { host, port, username, password }),
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
+            var response = await _httpClient.PostAsync($"{_baseUrl}/ssh/test", content);
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch (Exception ex) { return JsonSerializer.Serialize(new { success = false, message = $"Erreur de connexion: {ex.Message}" }); }
+    }
+
+    public async Task<string?> RunSSHScanAsync(string host, int port, string username, string password)
+    {
+        try
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(new { host, port, username, password }),
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
+            var response = await _httpClient.PostAsync($"{_baseUrl}/ssh/scan", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+            return $"Erreur API: {response.StatusCode} - {await response.Content.ReadAsStringAsync()}";
+        }
+        catch (Exception ex) { return $"Erreur de connexion: {ex.Message}"; }
+    }
+
+    public async Task<string?> RunSSHAVScanAsync(string host, int port, string username, string password, string scanPath)
+    {
+        try
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(new { host, port, username, password, scan_path = scanPath }),
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
+            var response = await _httpClient.PostAsync($"{_baseUrl}/ssh/scanav", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+            return $"Erreur API: {response.StatusCode} - {await response.Content.ReadAsStringAsync()}";
+        }
+        catch (Exception ex) { return $"Erreur de connexion: {ex.Message}"; }
+    }
 }

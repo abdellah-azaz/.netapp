@@ -177,6 +177,29 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private bool _requirePasswordForDelete = true;
     [ObservableProperty] private bool _requirePasswordForDownload = true;
 
+    // --- SSH Connection Properties ---
+    [ObservableProperty] private string _sshHost = string.Empty;
+    [ObservableProperty] private int _sshPort = 22;
+    [ObservableProperty] private string _sshUsername = string.Empty;
+    [ObservableProperty] private string _sshPassword = string.Empty;
+    [ObservableProperty] private bool _isSSHConnected = false;
+    [ObservableProperty] private bool _isSSHScanning = false;
+    [ObservableProperty] private bool _isSSHAVScanning = false;
+    [ObservableProperty] private string _sshStatusMessage = string.Empty;
+    [ObservableProperty] private string _sshRemotePath = "/home";
+    [ObservableProperty] private int _selectedSSHTabIndex = 0;
+
+    // --- SSH Scan Results ---
+    [ObservableProperty] private ScanResult? _sshStructuredScanResult;
+    [ObservableProperty] private AVScanReport? _sshLastAVScanResult;
+
+    // --- SSH Risk Metrics ---
+    [ObservableProperty] private int _sshCriticalRiskCount = 0;
+    [ObservableProperty] private int _sshHighRiskCount = 0;
+    [ObservableProperty] private int _sshMediumRiskCount = 0;
+    [ObservableProperty] private int _sshLowRiskCount = 0;
+    [ObservableProperty] private int _sshSecurityScore = 100;
+
     partial void OnRequirePasswordForDeleteChanged(bool value)
     {
         if (!_isInitialLoading) _ = SaveUserSettings();
@@ -694,6 +717,117 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             await RefreshVault();
         }
+    }
+
+    // --- SSH Scan Commands ---
+
+    [RelayCommand]
+    private async Task TestSSHConnection()
+    {
+        if (string.IsNullOrWhiteSpace(SshHost) || string.IsNullOrWhiteSpace(SshUsername) || string.IsNullOrWhiteSpace(SshPassword))
+        {
+            SshStatusMessage = "Veuillez remplir Host, Username et Password.";
+            return;
+        }
+
+        SshStatusMessage = "Test de connexion en cours...";
+        var resultJson = await _scannerService.TestSSHConnectionAsync(SshHost, SshPort, SshUsername, SshPassword);
+        
+        try
+        {
+            using var doc = JsonDocument.Parse(resultJson ?? "{}");
+            bool success = doc.RootElement.GetProperty("success").GetBoolean();
+            if (success)
+            {
+                IsSSHConnected = true;
+                SshStatusMessage = doc.RootElement.GetProperty("message").GetString() ?? "Connecté !";
+            }
+            else
+            {
+                IsSSHConnected = false;
+                SshStatusMessage = doc.RootElement.GetProperty("message").GetString() ?? "Échec de connexion.";
+            }
+        }
+        catch { SshStatusMessage = "Erreur lors du test de connexion."; }
+    }
+
+    [RelayCommand]
+    private async Task RunSSHScan()
+    {
+        if (!IsSSHConnected) { SshStatusMessage = "Connectez-vous d'abord."; return; }
+        
+        IsSSHScanning = true;
+        SshStatusMessage = "Audit de sécurité distant en cours...";
+        
+        var resultJson = await _scannerService.RunSSHScanAsync(SshHost, SshPort, SshUsername, SshPassword);
+        
+        if (resultJson != null && !resultJson.StartsWith("Erreur"))
+        {
+            try 
+            {
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                SshStructuredScanResult = JsonSerializer.Deserialize<ScanResult>(resultJson, options);
+                CalculateSSHRiskMetrics();
+                SshStatusMessage = "Audit SSH terminé.";
+            }
+            catch (Exception ex)
+            {
+                SshStatusMessage = $"Erreur de lecture: {ex.Message}";
+            }
+        }
+        else
+        {
+            SshStatusMessage = resultJson ?? "Le scan SSH a échoué.";
+        }
+        IsSSHScanning = false;
+    }
+
+    [RelayCommand]
+    private async Task RunSSHAVScan()
+    {
+        if (!IsSSHConnected) { SshStatusMessage = "Connectez-vous d'abord."; return; }
+        
+        IsSSHAVScanning = true;
+        SshStatusMessage = "Scan antivirus distant en cours...";
+        
+        var resultJson = await _scannerService.RunSSHAVScanAsync(SshHost, SshPort, SshUsername, SshPassword, SshRemotePath);
+        
+        if (resultJson != null && !resultJson.StartsWith("Erreur"))
+        {
+            try 
+            {
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var root = JsonDocument.Parse(resultJson);
+                // The backend returns the 'data' field directly if successful in the helper, 
+                // but our main.py returns result["data"]. 
+                // Let's re-verify backend main.py: return result["data"]
+                // Wait, SshAVScanResult is AVScanReport. 
+                // Existing AVScanReport class is used for local scans.
+                SshLastAVScanResult = JsonSerializer.Deserialize<AVScanReport>(resultJson, options);
+                SshStatusMessage = "Scan AV SSH terminé.";
+            }
+            catch (Exception ex)
+            {
+                SshStatusMessage = $"Erreur de lecture: {ex.Message}";
+            }
+        }
+        else
+        {
+            SshStatusMessage = resultJson ?? "Le scan AV SSH a échoué.";
+        }
+        IsSSHAVScanning = false;
+    }
+
+    private void CalculateSSHRiskMetrics()
+    {
+        if (SshStructuredScanResult == null) return;
+
+        SshCriticalRiskCount = SshStructuredScanResult.Risques.Count(r => r.Niveau == "CRITIQUE");
+        SshHighRiskCount = SshStructuredScanResult.Risques.Count(r => r.Niveau == "ÉLEVÉ" || r.Niveau == "ELEVE");
+        SshMediumRiskCount = SshStructuredScanResult.Risques.Count(r => r.Niveau == "MOYEN");
+        
+        int score = 100 - (SshCriticalRiskCount * 25) - (SshHighRiskCount * 15) - (SshMediumRiskCount * 5);
+        SshSecurityScore = Math.Max(0, score);
     }
 
     [RelayCommand]
