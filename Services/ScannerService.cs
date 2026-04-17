@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 using MonAppMultiplateforme.Models;
@@ -13,7 +14,7 @@ public class ScannerService
 
     public ScannerService(string baseUrl = "http://127.0.0.1:8000")
     {
-        _httpClient = new HttpClient();
+        _httpClient = new HttpClient(new TokenInterceptorHandler());
         _baseUrl = baseUrl.TrimEnd('/');
     }
 

@@ -355,6 +355,12 @@ public partial class MainWindowViewModel : ViewModelBase
                 IsLoggedIn = true;
                 IsAuthRequired = false;
                 
+                // Store JWT token
+                if (doc.RootElement.TryGetProperty("token", out var tokenProp))
+                {
+                    AuthTokenProvider.Token = tokenProp.GetString() ?? string.Empty;
+                }
+
                 // Store user info
                 if (doc.RootElement.TryGetProperty("user", out var user))
                 {

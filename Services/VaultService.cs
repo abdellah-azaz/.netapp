@@ -21,7 +21,7 @@ namespace MonAppMultiplateforme.Services
 
         public VaultService()
         {
-            _httpClient = new HttpClient();
+            _httpClient = new HttpClient(new TokenInterceptorHandler());
         }
 
         public async Task<bool> UploadFileAsync(string filePath, string email)

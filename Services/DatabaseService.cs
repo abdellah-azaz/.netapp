@@ -11,7 +11,7 @@ namespace MonAppMultiplateforme.Services;
 public class DatabaseService
 {
     private readonly string _connectionString;
-    private static readonly HttpClient _httpClient = new HttpClient();
+    private static readonly HttpClient _httpClient = new HttpClient(new TokenInterceptorHandler());
 
     public DatabaseService(string host, int port, string database, string user, string password)
     {
