@@ -356,7 +356,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 IsAuthRequired = false;
                 
                 // Store JWT token
-                if (doc.RootElement.TryGetProperty("token", out var tokenProp))
+                if (doc.RootElement.TryGetProperty("access_token", out var tokenProp))
                 {
                     AuthTokenProvider.Token = tokenProp.GetString() ?? string.Empty;
                 }
@@ -1413,16 +1413,36 @@ public partial class MainWindowViewModel : ViewModelBase
             }
             else
             {
-                AIExplanationText = "Désolé, l'IA n'a pas pu générer d'explication pour le moment.";
+                AIExplanationText = "L'IA n'a pas pu analyser cette détection.";
             }
         }
         catch (Exception ex)
         {
-            AIExplanationText = $"Erreur lors de l'analyse : {ex.Message}";
+            AIExplanationText = $"Erreur d'analyse: {ex.Message}";
         }
         finally
         {
             IsAIAnalyzing = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task ClearAVHistory()
+    {
+        bool confirm = true; // Simple for now, could add a popup if needed
+        if (confirm)
+        {
+            StatusMessage = "Nettoyage de l'historique complet...";
+            bool success = await _scannerService.CleanupAVHistoryAsync(-1, CurrentUserEmail);
+            if (success)
+            {
+                StatusMessage = "Historique vidé avec succès.";
+                await LoadAVHistory();
+            }
+            else
+            {
+                StatusMessage = "Échec du nettoyage de l'historique.";
+            }
         }
     }
 

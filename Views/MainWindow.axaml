@@ -9,7 +9,7 @@
         x:Class="MonAppMultiplateforme.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="MonAppMultiplateforme">
+        Title="AH Digital Scanner App">
     
     <Window.Resources>
         <StreamGeometry x:Key="IconHome">M12,5.69L17,10.19V18H15V12H9V18H7V10.19L12,5.69M12,3L2,12H5V20H11V14H13V20H19V12H22L12,3Z</StreamGeometry>
@@ -215,7 +215,7 @@
                     <Border CornerRadius="16" Padding="40" Background="#2c3e50" BoxShadow="0 10 30 0 #40000000">
                         <Grid ColumnDefinitions="*,Auto">
                             <StackPanel Spacing="15" VerticalAlignment="Center">
-                                <TextBlock Text="Bienvenue sur Crypton Suite" FontSize="32" FontWeight="Black" Foreground="White"/>
+                                <TextBlock Text="Bienvenue sur AH Digital Scanner App" FontSize="32" FontWeight="Black" Foreground="White"/>
                                 <TextBlock Text="Votre plateforme tout-en-un pour la sécurité système et la gestion de la confidentialité." 
                                            FontSize="16" Foreground="#bdc3c7" TextWrapping="Wrap" MaxWidth="500"/>
                                 <Border Background="#3498db" HorizontalAlignment="Left" CornerRadius="8" Padding="15,8" Margin="0,10,0,0">
@@ -399,76 +399,132 @@
             <!-- Password Manager (Redesigned) -->
             <Grid IsVisible="{Binding CurrentPage, Converter={StaticResource StringEqualsConverter}, ConverterParameter='Password Manager'}" RowDefinitions="Auto,*">
                 <!-- Header Card -->
-                <Border Grid.Row="0" Background="White" CornerRadius="12" Padding="20" Margin="0,0,0,20" BoxShadow="0 4 12 0 #15000000">
-                    <StackPanel Spacing="5">
-                        <TextBlock Text="Gestionnaire de Mots de Passe" FontSize="26" FontWeight="Bold" Foreground="#2c3e50"/>
-                        <TextBlock Text="Sécurisez vos données avec le chiffrement AES-GCM et partagez-les en toute sécurité." Foreground="#7f8c8d" FontSize="14"/>
-                    </StackPanel>
+                <Border Grid.Row="0" CornerRadius="12" Padding="25" Margin="0,0,0,20" BoxShadow="0 8 15 0 #20000000">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+                            <GradientStop Color="#2c3e50" Offset="0.0"/>
+                            <GradientStop Color="#34495e" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Gestionnaire de Mots de Passe" FontSize="28" FontWeight="Black" Foreground="White"/>
+                            <TextBlock Text="Sécurisez vos accès avec un chiffrement AES-GCM 256 bits ultra-performant." Foreground="#bdc3c7" FontSize="14"/>
+                        </StackPanel>
+                        <PathIcon Grid.Column="1" Data="{StaticResource IconPassword}" Width="50" Height="50" Foreground="White" Opacity="0.1" VerticalAlignment="Center"/>
+                    </Grid>
                 </Border>
 
                 <!-- Action Card -->
-                <Border Grid.Row="1" Background="White" CornerRadius="12" Padding="30" BoxShadow="0 2 10 0 #10000000" VerticalAlignment="Top">
-                    <StackPanel Spacing="25">
-                        <!-- Saisie -->
-                        <StackPanel Spacing="8">
-                            <TextBlock Text="Saisir votre mot de passe" FontWeight="SemiBold" Foreground="#34495e" FontSize="14"/>
+                <Border Grid.Row="1" Background="White" CornerRadius="16" Padding="35" BoxShadow="0 10 30 0 #15000000" VerticalAlignment="Top">
+                    <StackPanel Spacing="30">
+                        <!-- Saisie Section -->
+                        <StackPanel Spacing="12">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="{StaticResource IconPassword}" Width="16" Height="16" Foreground="#3498db"/>
+                                <TextBlock Text="Saisir votre mot de passe à sécuriser" FontWeight="Bold" Foreground="#2c3e50" FontSize="15"/>
+                            </StackPanel>
                             <TextBox PasswordChar="*" 
                                      Text="{Binding Password}" 
-                                     Watermark="Tapez un mot de passe à sécuriser..." 
-                                     Height="45"
+                                     Watermark="Ex: MonMotDePasseSecret123!" 
+                                     Height="50"
+                                     FontSize="16"
                                      VerticalContentAlignment="Center"
-                                     CornerRadius="8"/>
+                                     CornerRadius="10"
+                                     BorderThickness="2"
+                                     BorderBrush="#f1f2f6"/>
                         </StackPanel>
 
-                        <!-- Actions Principal -->
+                        <!-- Actions Principal Section -->
                         <Grid ColumnDefinitions="*,*">
                             <Button Grid.Column="0" 
-                                    Content="Générer Aléatoirement" 
                                     Command="{Binding GeneratePasswordCommand}" 
                                     IsVisible="{Binding IsRandomPasswordEnabled}"
                                     HorizontalAlignment="Stretch" 
-                                    Height="45"
+                                    Height="50"
                                     Background="#34495e"
                                     Foreground="White"
-                                    CornerRadius="8"
-                                    Margin="0,0,7,0"
-                                    HorizontalContentAlignment="Center"/>
+                                    CornerRadius="10"
+                                    Margin="0,0,10,0">
+                                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
+                                    <PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Width="18" Height="18" Foreground="White"/>
+                                    <TextBlock Text="Générer Aléatoirement" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            
                             <Button Grid.Column="1" 
-                                    Content="Chiffrer &amp; Enregistrer" 
                                     Command="{Binding ValidatePasswordCommand}" 
                                     HorizontalAlignment="Stretch" 
-                                    Height="45"
-                                    Classes="accent"
-                                    CornerRadius="8"
-                                    Margin="7,0,0,0"
-                                    HorizontalContentAlignment="Center"/>
+                                    Height="50"
+                                    Background="#2ecc71"
+                                    Foreground="White"
+                                    CornerRadius="10"
+                                    Margin="10,0,0,0">
+                                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
+                                    <PathIcon Data="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.66,7 15,8.34 15,10V11H16V17H8V11H9V10C9,8.34 10.34,7 12,7M12,8.5A1.5,1.5 0 0,0 10.5,10V11H13.5V10A1.5,1.5 0 0,0 12,8.5Z" Width="18" Height="18" Foreground="White"/>
+                                    <TextBlock Text="Chiffrer &amp; Enregistrer" FontWeight="Bold" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
                         </Grid>
 
-                        <Separator Height="1" Background="#ecf0f1" Margin="0,10"/>
+                        <Rectangle Height="2" Fill="#f1f2f6" Margin="0,10"/>
 
-                        <!-- Résultat -->
-                        <StackPanel Spacing="8" IsVisible="{Binding IsEncryptedResultVisible}">
-                            <TextBlock Text="Mot de passe chiffré (Résultat)" FontWeight="SemiBold" Foreground="#34495e" FontSize="14"/>
-                            <TextBox Text="{Binding EncryptedPassword}" 
-                                     Watermark="Le résultat apparaîtra ici après action..." 
-                                     IsReadOnly="True"
-                                     Height="45"
-                                     VerticalContentAlignment="Center"
-                                     Background="#f8f9fa"
-                                     CornerRadius="8"/>
+                        <!-- Résultat Section -->
+                        <StackPanel Spacing="12" IsVisible="{Binding IsEncryptedResultVisible}">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <PathIcon Data="M12,17A2,2 0 0,0 14,15C14,13.89 13.11,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M9,6A3,3 0 0,1 12,3A3,3 0 0,1 15,6V8H9V6Z" Width="16" Height="16" Foreground="#f39c12"/>
+                                <TextBlock Text="Mot de passe chiffré (Résultat)" FontWeight="Bold" Foreground="#2c3e50" FontSize="15"/>
+                            </StackPanel>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <TextBox Text="{Binding EncryptedPassword}" 
+                                         Watermark="Le résultat apparaîtra ici..." 
+                                         IsReadOnly="True"
+                                         Height="50"
+                                         FontSize="14"
+                                         FontFamily="Consolas, monospace"
+                                         VerticalContentAlignment="Center"
+                                         Background="#f8fafc"
+                                         BorderThickness="2"
+                                         BorderBrush="#e2e8f0"
+                                         CornerRadius="10,0,0,10"/>
+                                <Button Grid.Column="1" Background="#e2e8f0" Width="50" Height="50" CornerRadius="0,10,10,0"
+                                        ToolTip.Tip="Copier dans le presse-papier">
+                                    <PathIcon Data="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" Width="18" Height="18" Foreground="#64748b"/>
+                                </Button>
+                            </Grid>
                         </StackPanel>
 
                         <!-- Message d'état -->
-                        <Border Background="#f1f2f6" CornerRadius="8" Padding="15" IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <PathIcon Data="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" Width="18" Height="18" Foreground="#3498db"/>
+                        <Border Background="#ebf5ff" BorderBrush="#3498db" BorderThickness="1" CornerRadius="10" Padding="15" IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <PathIcon Data="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" Width="20" Height="20" Foreground="#3498db"/>
                                 <TextBlock Text="{Binding StatusMessage}" 
-                                           FontSize="13"
+                                           FontSize="14"
                                            Foreground="#2c3e50"
                                            VerticalAlignment="Center"
-                                           TextWrapping="Wrap"/>
+                                           TextWrapping="Wrap"
+                                           MaxWidth="600"/>
                             </StackPanel>
                         </Border>
+
+                        <!-- Security Tips Section (Decoration) -->
+                        <StackPanel Spacing="15" Margin="0,10,0,0">
+                            <TextBlock Text="Conseils de Sécurité" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                            <UniformGrid Columns="2">
+                                <Border Background="#f9f9f9" CornerRadius="8" Padding="15" Margin="0,0,5,5">
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <PathIcon Data="M12,22A10,10 0 1,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 1,0 20,12A8,8 0 0,0 12,4M11,17H13V11H11V17M11,9H13V7H11V9Z" Width="14" Height="14" Foreground="#3498db"/>
+                                        <TextBlock Text="Utilisez au moins 12 caractères." FontSize="12" Foreground="#7f8c8d" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#f9f9f9" CornerRadius="8" Padding="15" Margin="5,0,0,5">
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <PathIcon Data="M12,22A10,10 0 1,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 1,0 20,12A8,8 0 0,0 12,4M11,17H13V11H11V17M11,9H13V7H11V9Z" Width="14" Height="14" Foreground="#3498db"/>
+                                        <TextBlock Text="Mélangez lettres, chiffres et symboles." FontSize="12" Foreground="#7f8c8d" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </UniformGrid>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -749,7 +805,17 @@
                     <!-- Tab: Historique -->
                     <TabItem Header="Historique">
                         <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
-                            <TextBlock Grid.Row="0" Text="Derniers scans effectués" FontWeight="Bold" Margin="0,0,0,15"/>
+                            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,15">
+                                <TextBlock Text="Derniers scans effectués" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <Button Grid.Column="1" Command="{Binding ClearAVHistoryCommand}" 
+                                        Background="#fef2f2" Foreground="#dc2626" BorderBrush="#dc2626" BorderThickness="1"
+                                        Padding="10,5" CornerRadius="6">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <PathIcon Data="{StaticResource IconDelete}" Width="14" Height="14" Foreground="#dc2626"/>
+                                        <TextBlock Text="Vider l'historique" FontSize="12" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
                             <DataGrid Grid.Row="1" ItemsSource="{Binding AvHistory}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Date" Binding="{Binding ScanDate}" Width="150" />
