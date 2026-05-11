@@ -199,6 +199,23 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private int _sshMediumRiskCount = 0;
     [ObservableProperty] private int _sshLowRiskCount = 0;
     [ObservableProperty] private int _sshSecurityScore = 100;
+    
+    // --- Profile & Quota Properties ---
+    [ObservableProperty] private int _dailyScanCount = 0;
+    [ObservableProperty] private int _scanQuota = 30;
+    [ObservableProperty] private ObservableCollection<SSHHost> _sshHostsList = new();
+    [ObservableProperty] private bool _isProfileLoading = false;
+
+    // --- SSH Host Fields ---
+    [ObservableProperty] private string _newSSHHostName = string.Empty;
+    [ObservableProperty] private string _newSSHHostHost = string.Empty;
+    [ObservableProperty] private int _newSSHHostPort = 22;
+    [ObservableProperty] private string _newSSHHostUsername = string.Empty;
+    [ObservableProperty] private string _newSSHHostPassword = string.Empty;
+
+    // --- Boot (Security Audit) History ---
+    [ObservableProperty] private ObservableCollection<BootHistoryEntry> _bootHistory = new();
+    [ObservableProperty] private bool _isBootHistoryLoading = false;
 
     partial void OnRequirePasswordForDeleteChanged(bool value)
     {
@@ -377,8 +394,9 @@ public partial class MainWindowViewModel : ViewModelBase
                 StatusMessage = string.Empty;
                 AuthPassword = string.Empty;
                 
-                // Load settings
+                // Load settings and profile data
                 await LoadUserSettings();
+                await LoadProfileData();
             }
             else
             {
@@ -723,6 +741,10 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             await RefreshVault();
         }
+        else if (page == "Profil")
+        {
+            await LoadProfileData();
+        }
     }
 
     // --- SSH Scan Commands ---
@@ -747,6 +769,7 @@ public partial class MainWindowViewModel : ViewModelBase
             {
                 IsSSHConnected = true;
                 SshStatusMessage = doc.RootElement.GetProperty("message").GetString() ?? "Connecté !";
+                await AutoSaveSSHHost();
             }
             else
             {
@@ -775,6 +798,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 SshStructuredScanResult = JsonSerializer.Deserialize<ScanResult>(resultJson, options);
                 CalculateSSHRiskMetrics();
                 SshStatusMessage = "Audit SSH terminé.";
+                await AutoSaveSSHHost();
             }
             catch (Exception ex)
             {
@@ -811,6 +835,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 // Existing AVScanReport class is used for local scans.
                 SshLastAVScanResult = JsonSerializer.Deserialize<AVScanReport>(resultJson, options);
                 SshStatusMessage = "Scan AV SSH terminé.";
+                await AutoSaveSSHHost();
             }
             catch (Exception ex)
             {
@@ -945,7 +970,47 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private async Task RefreshAVData()
     {
-        await Task.WhenAll(LoadAVStats(), LoadAVHistory(), LoadAVQuarantine(), LoadRealtimeStatus());
+        await Task.WhenAll(LoadAVStats(), LoadAVHistory(), LoadAVQuarantine(), LoadRealtimeStatus(), LoadBootHistory());
+    }
+
+    [RelayCommand]
+    private async Task LoadBootHistory()
+    {
+        IsBootHistoryLoading = true;
+        var json = await _scannerService.GetBootHistoryAsync();
+        if (json != null)
+        {
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var history = JsonSerializer.Deserialize<List<BootHistoryEntry>>(json, options);
+            if (history != null) BootHistory = new ObservableCollection<BootHistoryEntry>(history);
+        }
+        IsBootHistoryLoading = false;
+    }
+
+    [RelayCommand]
+    private async Task DownloadReport(object parameter)
+    {
+        string? scanId = null;
+        if (parameter is BootHistoryEntry bootEntry) scanId = bootEntry.ScanId;
+        else if (parameter is AVHistoryEntry avEntry) scanId = avEntry.ScanId;
+        else if (parameter is string s) scanId = s;
+
+        if (string.IsNullOrEmpty(scanId)) return;
+
+        StatusMessage = $"Préparation du téléchargement : {scanId}...";
+        
+        // Choisir un chemin de destination (Dossier Downloads)
+        string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        if (!Directory.Exists(downloadsPath)) downloadsPath = Path.GetTempPath();
+        
+        string fileName = $"Rapport_{scanId}.json";
+        string destPath = Path.Combine(downloadsPath, fileName);
+
+        bool success = await _scannerService.DownloadReportAsync(scanId, destPath);
+        if (success)
+            StatusMessage = $"Rapport téléchargé dans : {destPath}";
+        else
+            StatusMessage = "Échec du téléchargement du rapport.";
     }
 
     [RelayCommand]
@@ -1451,5 +1516,128 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         IsAIExplanationPopupVisible = false;
         AIExplanationText = string.Empty;
+    }
+
+    [RelayCommand]
+    private async Task LoadProfileData()
+    {
+        if (string.IsNullOrEmpty(CurrentUserEmail)) return;
+        
+        IsProfileLoading = true;
+        var json = await _scannerService.GetProfileAsync(CurrentUserEmail);
+        if (json != null)
+        {
+            try
+            {
+                using var doc = JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("user", out var user))
+                {
+                    DailyScanCount = user.TryGetProperty("daily_scan_count", out var dsc) ? dsc.GetInt32() : 0;
+                }
+                if (doc.RootElement.TryGetProperty("quota_limit", out var ql))
+                {
+                    ScanQuota = ql.GetInt32();
+                }
+            }
+            catch { }
+        }
+        
+        await LoadSSHHosts();
+        IsProfileLoading = false;
+    }
+
+    [RelayCommand]
+    private async Task LoadSSHHosts()
+    {
+        var hosts = await _scannerService.GetSSHHostsAsync(CurrentUserEmail);
+        if (hosts != null)
+        {
+            SshHostsList = new ObservableCollection<SSHHost>(hosts);
+        }
+    }
+
+    [RelayCommand]
+    private async Task AddSSHHost()
+    {
+        if (string.IsNullOrWhiteSpace(NewSSHHostHost) || string.IsNullOrWhiteSpace(NewSSHHostUsername))
+        {
+            ProfileStatusMessage = "Host et Username sont requis.";
+            return;
+        }
+
+        var host = new SSHHost
+        {
+            Name = string.IsNullOrWhiteSpace(NewSSHHostName) ? NewSSHHostHost : NewSSHHostName,
+            Host = NewSSHHostHost,
+            Port = NewSSHHostPort,
+            Username = NewSSHHostUsername,
+            Password = NewSSHHostPassword,
+            OwnerEmail = CurrentUserEmail
+        };
+
+        bool success = await _scannerService.AddSSHHostAsync(host);
+        if (success)
+        {
+            ProfileStatusMessage = "Hôte SSH enregistré !";
+            NewSSHHostName = string.Empty;
+            NewSSHHostHost = string.Empty;
+            NewSSHHostPort = 22;
+            NewSSHHostUsername = string.Empty;
+            NewSSHHostPassword = string.Empty;
+            await LoadSSHHosts();
+        }
+        else
+        {
+            ProfileStatusMessage = "Erreur lors de l'enregistrement.";
+        }
+    }
+
+    [RelayCommand]
+    private async Task DeleteSSHHost(SSHHost host)
+    {
+        if (host == null) return;
+        bool success = await _scannerService.DeleteSSHHostAsync(host.Id, CurrentUserEmail);
+        if (success)
+        {
+            SshHostsList.Remove(host);
+            ProfileStatusMessage = "Hôte supprimé.";
+        }
+    }
+
+    [RelayCommand]
+    private async Task UseSavedSSHHost(SSHHost host)
+    {
+        if (host == null) return;
+        SshHost = host.Host;
+        SshPort = host.Port;
+        SshUsername = host.Username;
+        SshPassword = host.Password; // Restauration du mot de passe
+        await Navigate("SSH Scan");
+    }
+
+    private async Task AutoSaveSSHHost()
+    {
+        if (string.IsNullOrWhiteSpace(SshHost) || string.IsNullOrWhiteSpace(SshUsername) || string.IsNullOrEmpty(CurrentUserEmail))
+            return;
+            
+        // Check if already in SshHostsList
+        if (SshHostsList.Any(h => h.Host == SshHost && h.Username == SshUsername))
+            return;
+
+        var host = new SSHHost
+        {
+            Name = SshHost,
+            Host = SshHost,
+            Port = SshPort,
+            Username = SshUsername,
+            Password = SshPassword,
+            OwnerEmail = CurrentUserEmail
+        };
+
+        bool success = await _scannerService.AddSSHHostAsync(host);
+        if (success)
+        {
+            await LoadSSHHosts(); // Refresh list to reflect the new saved host
+        }
     }
 }

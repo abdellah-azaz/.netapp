@@ -28,6 +28,8 @@
         <StreamGeometry x:Key="IconActivity">M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.58L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z</StreamGeometry>
         <StreamGeometry x:Key="IconLogout">M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12C20,9.28 18.64,6.88 16.56,5.44M13,3H11V13H13V3Z</StreamGeometry>
         <StreamGeometry x:Key="IconSSH">M20,18H4V4H20M20,2H4A2,2 0 0,0 2,4V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V4C22,2.89 21.1,2 20,2M12,13L7,8L8.41,6.59L12,10.17L15.59,6.59L17,8L12,13Z</StreamGeometry>
+        <StreamGeometry x:Key="IconPlus">M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z</StreamGeometry>
+        <StreamGeometry x:Key="IconScanner">M7,17L10.2,13H7V11H14V13L10.8,17H7M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z</StreamGeometry>
         <conv:BoolAndConverter x:Key="BoolAndConverter"/>
     </Window.Resources>
 
@@ -822,6 +824,19 @@
                                     <DataGridTextColumn Header="Cible" Binding="{Binding TargetPath}" Width="*" />
                                     <DataGridTextColumn Header="Total" Binding="{Binding TotalFiles}" Width="70" />
                                     <DataGridTextColumn Header="Menaces" Binding="{Binding MalwareFiles}" Width="80" />
+                                    <DataGridTemplateColumn Header="Actions" Width="120">
+                                        <DataTemplate DataType="models:AVHistoryEntry">
+                                            <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).DownloadReportCommand}" 
+                                                    CommandParameter="{Binding}"
+                                                    Background="#ebf5ff" BorderBrush="#3498db" BorderThickness="1" 
+                                                    Padding="8,4" HorizontalAlignment="Center">
+                                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                                    <PathIcon Data="M5,20V18H19V20H5M12,17L7,12H10V4H14V12H17L12,17Z" Width="14" Height="14" Foreground="#3498db"/>
+                                                    <TextBlock Text="JSON" FontSize="11" Foreground="#3498db"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -1116,6 +1131,7 @@
                     </TabItem>
 
                     <!-- Tab: Protection & Logs -->
+                    <!-- Tab: Protection & Logs -->
                     <TabItem Header="Défense &amp; Activité">
                          <ScrollViewer Margin="0,15,0,0">
                             <StackPanel Spacing="20">
@@ -1206,6 +1222,38 @@
                                 </Border>
                             </StackPanel>
                         </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Tab: Historique des Audits -->
+                    <TabItem Header="Historique Rapports">
+                        <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
+                            <TextBlock Grid.Row="0" Text="Précédents audits de sécurité" FontWeight="Bold" Margin="0,0,0,15" Foreground="#34495e"/>
+                            <Panel Grid.Row="1">
+                                <TextBlock Text="Aucun historique disponible." 
+                                           IsVisible="{Binding !BootHistory.Count}" 
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#95a5a6"/>
+                                           
+                                <DataGrid ItemsSource="{Binding BootHistory}" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal" IsVisible="{Binding BootHistory.Count}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Date" Binding="{Binding CreatedAt}" Width="200" />
+                                        <DataGridTextColumn Header="Système" Binding="{Binding Filename}" Width="*" />
+                                        <DataGridTemplateColumn Header="Action" Width="150">
+                                            <DataTemplate DataType="models:BootHistoryEntry">
+                                                <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).DownloadReportCommand}" 
+                                                        CommandParameter="{Binding}"
+                                                        Background="#ebf5ff" BorderBrush="#3498db" BorderThickness="1" 
+                                                        Padding="12,6" HorizontalAlignment="Center">
+                                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                                        <PathIcon Data="M5,20V18H19V20H5M12,17L7,12H10V4H14V12H17L12,17Z" Width="14" Height="14" Foreground="#3498db"/>
+                                                        <TextBlock Text="Rapport JSON" FontSize="11" Foreground="#3498db" FontWeight="Bold"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Panel>
+                        </Grid>
                     </TabItem>
                 </TabControl>
 
@@ -1422,6 +1470,95 @@
                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                             CornerRadius="8" FontWeight="Bold"/>
                                 </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Scan Quota & SSH Hosts -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="30" Margin="0,0,0,30">
+                        <!-- Scan Quota Card -->
+                        <Border Grid.Column="0" Background="White" CornerRadius="16" Padding="25" BoxShadow="0 4 12 0 #15000000">
+                            <StackPanel Spacing="20">
+                                <StackPanel Orientation="Horizontal" Spacing="15">
+                                    <Border Background="#2ecc71" Width="50" Height="50" CornerRadius="25">
+                                        <PathIcon Data="{StaticResource IconScanner}" Foreground="White" Width="24" Height="24"/>
+                                    </Border>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="Quota de Scan" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                                        <TextBlock Text="Usage de vos scans quotidiens" FontSize="12" Foreground="#7f8c8d"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <Rectangle Height="1" Fill="#f0f0f0"/>
+                                
+                                <StackPanel Spacing="10">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Text="Scans effectués aujourd'hui" FontSize="14" Foreground="#34495e"/>
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                            <TextBlock Text="{Binding DailyScanCount}" FontWeight="Bold" Foreground="#2ecc71"/>
+                                            <TextBlock Text=" / " Foreground="#bdc3c7"/>
+                                            <TextBlock Text="{Binding ScanQuota}" Foreground="#7f8c8d"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    
+                                    <ProgressBar Value="{Binding DailyScanCount}" Minimum="0" Maximum="{Binding ScanQuota}" 
+                                                 Height="12" Background="#f1f2f6" Foreground="#2ecc71" CornerRadius="6"/>
+                                    
+                                    <TextBlock Text="Réinitialisation automatique à minuit." FontSize="11" Foreground="#95a5a6" FontStyle="Italic"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Saved SSH Hosts Card -->
+                        <Border Grid.Column="1" Background="White" CornerRadius="16" Padding="25" BoxShadow="0 4 12 0 #15000000">
+                            <StackPanel Spacing="20">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <StackPanel Orientation="Horizontal" Spacing="15">
+                                        <Border Background="#9b59b6" Width="50" Height="50" CornerRadius="25">
+                                            <PathIcon Data="{StaticResource IconSSH}" Foreground="White" Width="24" Height="24"/>
+                                        </Border>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock Text="Serveurs SSH" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+                                            <TextBlock Text="Vos hôtes enregistrés" FontSize="12" Foreground="#7f8c8d"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    
+                                    <Button Grid.Column="1" Command="{Binding NavigateCommand}" CommandParameter="SSH Scan"
+                                            Background="Transparent" BorderThickness="0" Padding="5">
+                                        <PathIcon Data="{StaticResource IconPlus}" Width="16" Height="16" Foreground="#9b59b6"/>
+                                    </Button>
+                                </Grid>
+                                
+                                <Rectangle Height="1" Fill="#f0f0f0"/>
+                                
+                                <ListBox ItemsSource="{Binding SshHostsList}" Background="Transparent" BorderThickness="0" MaxHeight="250">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="*,Auto" Margin="0,5">
+                                                <StackPanel Grid.Column="0" Spacing="2">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                                    <TextBlock Text="{Binding Host}" FontSize="11" Foreground="#7f8c8d"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="5">
+                                                    <Button Command="{Binding ((vm:MainWindowViewModel)DataContext).UseSavedSSHHostCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                                            CommandParameter="{Binding}"
+                                                            Background="#f1f2f6" Padding="8,4" CornerRadius="4">
+                                                        <TextBlock Text="Connecter" FontSize="11" Foreground="#2c3e50"/>
+                                                    </Button>
+                                                    <Button Command="{Binding ((vm:MainWindowViewModel)DataContext).DeleteSSHHostCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                                            CommandParameter="{Binding}"
+                                                            Background="Transparent" Padding="5">
+                                                        <PathIcon Data="{StaticResource IconDelete}" Width="12" Height="12" Foreground="#e74c3c"/>
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                
+                                <TextBlock Text="Aucun hôte enregistré." 
+                                           IsVisible="{Binding !SshHostsList.Count}"
+                                           HorizontalAlignment="Center" Foreground="#bdc3c7" FontStyle="Italic"/>
                             </StackPanel>
                         </Border>
                     </Grid>

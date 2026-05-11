@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using MonAppMultiplateforme.Models;
 
 namespace MonAppMultiplateforme.Services;
@@ -104,6 +105,37 @@ public class ScannerService
             return null;
         }
         catch { return null; }
+    }
+
+    public async Task<string?> GetBootHistoryAsync()
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/api/boot/history");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+            return null;
+        }
+        catch { return null; }
+    }
+
+    public async Task<bool> DownloadReportAsync(string scanId, string destPath)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/api/reports/download/{scanId}");
+            if (response.IsSuccessStatusCode)
+            {
+                using var stream = await response.Content.ReadAsStreamAsync();
+                using var fileStream = System.IO.File.Create(destPath);
+                await stream.CopyToAsync(fileStream);
+                return true;
+            }
+            return false;
+        }
+        catch { return false; }
     }
 
     public async Task<string?> GetQuarantineAsync(string email)
@@ -378,5 +410,67 @@ public class ScannerService
             return $"Erreur API: {response.StatusCode} - {await response.Content.ReadAsStringAsync()}";
         }
         catch (Exception ex) { return $"Erreur de connexion: {ex.Message}"; }
+    }
+
+    public async Task<string?> GetProfileAsync(string email)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/auth/profile?email={Uri.EscapeDataString(email)}");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+            return null;
+        }
+        catch { return null; }
+    }
+
+    public async Task<List<SSHHost>?> GetSSHHostsAsync(string email)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/ssh/hosts?email={Uri.EscapeDataString(email)}");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                return JsonSerializer.Deserialize<List<SSHHost>>(json, options);
+            }
+            return null;
+        }
+        catch { return null; }
+    }
+
+    public async Task<bool> AddSSHHostAsync(SSHHost host)
+    {
+        try
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(new { 
+                    name = host.Name,
+                    host = host.Host,
+                    port = host.Port,
+                    username = host.Username,
+                    password = host.Password,
+                    owner_email = host.OwnerEmail
+                }),
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
+            var response = await _httpClient.PostAsync($"{_baseUrl}/ssh/hosts", content);
+            return response.IsSuccessStatusCode;
+        }
+        catch { return false; }
+    }
+
+    public async Task<bool> DeleteSSHHostAsync(int hostId, string email)
+    {
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"{_baseUrl}/ssh/hosts/{hostId}?email={Uri.EscapeDataString(email)}");
+            return response.IsSuccessStatusCode;
+        }
+        catch { return false; }
     }
 }
