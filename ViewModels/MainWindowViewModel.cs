@@ -286,6 +286,28 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     public Func<Task<string?>>? RequestPasswordAction { get; set; }
+    public Func<Task<string?>>? RequestBrowseFolderAction { get; set; }
+    public Func<Task<string?>>? RequestBrowseFileAction { get; set; }
+
+    [RelayCommand]
+    private async Task BrowseFolder()
+    {
+        if (RequestBrowseFolderAction != null)
+        {
+            var path = await RequestBrowseFolderAction();
+            if (!string.IsNullOrEmpty(path)) ScanTargetPath = path;
+        }
+    }
+
+    [RelayCommand]
+    private async Task BrowseFile()
+    {
+        if (RequestBrowseFileAction != null)
+        {
+            var path = await RequestBrowseFileAction();
+            if (!string.IsNullOrEmpty(path)) ScanTargetPath = path;
+        }
+    }
 
     private string _lastProcessedPassword = string.Empty;
 

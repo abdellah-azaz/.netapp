@@ -30,6 +30,7 @@
         <StreamGeometry x:Key="IconSSH">M20,18H4V4H20M20,2H4A2,2 0 0,0 2,4V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V4C22,2.89 21.1,2 20,2M12,13L7,8L8.41,6.59L12,10.17L15.59,6.59L17,8L12,13Z</StreamGeometry>
         <StreamGeometry x:Key="IconPlus">M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z</StreamGeometry>
         <StreamGeometry x:Key="IconScanner">M7,17L10.2,13H7V11H14V13L10.8,17H7M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z</StreamGeometry>
+        <StreamGeometry x:Key="IconFile">M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z</StreamGeometry>
         <conv:BoolAndConverter x:Key="BoolAndConverter"/>
     </Window.Resources>
 
@@ -204,9 +205,6 @@
                 </DockPanel>
             </Border>
 
-            <!-- Content Area (The rest of the file content until the end of original Grid) -->
-            <!-- Note: I will need to close the Grid and Panel properly at the end -->
-
         <!-- Content Area -->
         <Grid Grid.Column="1" Margin="20">
             <!-- Accueil (Redesigned as Documentation) -->
@@ -286,9 +284,6 @@
                             </Button>
                         </Grid>
                     </StackPanel>
-
-                    <!-- User Guide Section (Omitted for brevity, keep existing content) -->
-                    <!-- ... -->
 
                     <!-- Support Link -->
                     <Border Background="#f1f2f6" CornerRadius="12" Padding="20">
@@ -670,9 +665,15 @@
                         <Grid RowDefinitions="Auto,*" Margin="0,15,0,0">
                             <StackPanel Grid.Row="0" Spacing="15" Margin="0,0,0,20">
                                 <TextBlock Text="Entrez le chemin à analyser :" FontWeight="SemiBold"/>
-                                <Grid ColumnDefinitions="*,Auto">
-                                    <TextBox Text="{Binding ScanTargetPath}" Watermark="Ex: /home/user/documents ou C:\MonDossier" Margin="0,0,10,0"/>
-                                    <Button Grid.Column="1" Content="Scanner" Command="{Binding RunAVScanCommand}" IsEnabled="{Binding !IsAVScanning}" Classes="accent" Padding="25,10"/>
+                                <Grid ColumnDefinitions="*,Auto,Auto,Auto">
+                                    <TextBox Grid.Column="0" Text="{Binding ScanTargetPath}" Watermark="Chemin du fichier ou dossier..." Margin="0,0,5,0"/>
+                                    <Button Grid.Column="1" Command="{Binding BrowseFileCommand}" ToolTip.Tip="Parcourir Fichier" Background="#f1f5f9" Margin="0,0,5,0">
+                                        <PathIcon Data="{StaticResource IconFile}" Width="16" Height="16" Foreground="#475569"/>
+                                    </Button>
+                                    <Button Grid.Column="2" Command="{Binding BrowseFolderCommand}" ToolTip.Tip="Parcourir Dossier" Background="#f1f5f9" Margin="0,0,10,0">
+                                        <PathIcon Data="{StaticResource IconFolder}" Width="16" Height="16" Foreground="#475569"/>
+                                    </Button>
+                                    <Button Grid.Column="3" Content="Lancer l'Analyse" Command="{Binding RunAVScanCommand}" IsEnabled="{Binding !IsAVScanning}" Classes="accent" Padding="20,10"/>
                                 </Grid>
                                 <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsAVScanning}" Height="4" Foreground="#3498db"/>
                             </StackPanel>

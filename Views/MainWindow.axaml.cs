@@ -26,6 +26,26 @@ public partial class MainWindow : Window
                 var result = await dialog.ShowDialog<bool>(this);
                 return result ? dialog.Password : null;
             };
+
+            viewModel.RequestBrowseFolderAction = async () =>
+            {
+                var result = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+                {
+                    Title = "Sélectionner un dossier à scanner",
+                    AllowMultiple = false
+                });
+                return result.Count > 0 ? result[0].Path.LocalPath : null;
+            };
+
+            viewModel.RequestBrowseFileAction = async () =>
+            {
+                var result = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    Title = "Sélectionner un fichier à scanner",
+                    AllowMultiple = false
+                });
+                return result.Count > 0 ? result[0].Path.LocalPath : null;
+            };
         }
     }
 
