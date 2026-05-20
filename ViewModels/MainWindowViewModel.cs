@@ -725,7 +725,7 @@ public partial class MainWindowViewModel : ViewModelBase
         SecurityScore = Math.Max(0, score);
     }
 
-    [RelayCommand]
+    [RelayCommand(AllowConcurrentExecutions = true)]
     private async Task Navigate(string page)
     {
         CurrentPage = page;
