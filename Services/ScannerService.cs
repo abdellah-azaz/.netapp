@@ -130,6 +130,34 @@ public class ScannerService
         catch { return false; }
     }
 
+    public async Task<QuarantineActionResponse> RestoreQuarantineWithDetailsAsync(string filename, string email, string? destination = null)
+    {
+        try
+        {
+            var url = $"{_baseUrl}/av/quarantine/restore/{Uri.EscapeDataString(filename)}?email={Uri.EscapeDataString(email)}";
+            if (!string.IsNullOrEmpty(destination))
+            {
+                url += $"&destination={Uri.EscapeDataString(destination)}";
+            }
+
+            var response = await _httpClient.PostAsync(url, null);
+            var json = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonSerializer.Deserialize<QuarantineActionResponse>(json, JsonOptions)
+                    ?? new QuarantineActionResponse { Success = true, Message = "Fichier restauré." };
+            }
+
+            return JsonSerializer.Deserialize<QuarantineActionResponse>(json, JsonOptions)
+                ?? new QuarantineActionResponse { Success = false, Message = $"Erreur API: {response.StatusCode}", Detail = json };
+        }
+        catch (Exception ex)
+        {
+            return new QuarantineActionResponse { Success = false, Message = "Erreur de connexion.", Detail = ex.Message };
+        }
+    }
+
     public async Task<bool> DeleteQuarantineAsync(string filename, string email)
     {
         try
@@ -138,6 +166,28 @@ public class ScannerService
             return response.IsSuccessStatusCode;
         }
         catch { return false; }
+    }
+
+    public async Task<QuarantineActionResponse> DeleteQuarantineWithDetailsAsync(string filename, string email)
+    {
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"{_baseUrl}/av/quarantine/delete/{Uri.EscapeDataString(filename)}?email={Uri.EscapeDataString(email)}");
+            var json = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonSerializer.Deserialize<QuarantineActionResponse>(json, JsonOptions)
+                    ?? new QuarantineActionResponse { Success = true, Message = "Fichier supprimé." };
+            }
+
+            return JsonSerializer.Deserialize<QuarantineActionResponse>(json, JsonOptions)
+                ?? new QuarantineActionResponse { Success = false, Message = $"Erreur API: {response.StatusCode}", Detail = json };
+        }
+        catch (Exception ex)
+        {
+            return new QuarantineActionResponse { Success = false, Message = "Erreur de connexion.", Detail = ex.Message };
+        }
     }
 
     public async Task<string?> GetAVHistoryAsync(string email)

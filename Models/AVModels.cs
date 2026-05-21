@@ -109,6 +109,17 @@ public class AVQuarantineEntry
     [JsonPropertyName("quarantine_date")] public string QuarantineDate { get; set; } = string.Empty;
 }
 
+public class QuarantineActionResponse
+{
+    [JsonPropertyName("success")] public bool Success { get; set; }
+    [JsonPropertyName("message")] public string Message { get; set; } = string.Empty;
+    [JsonPropertyName("detail")] public string? Detail { get; set; }
+    [JsonPropertyName("error")] public string? Error { get; set; }
+    [JsonPropertyName("original_path")] public string? OriginalPath { get; set; }
+    [JsonPropertyName("restored_to")] public string? RestoredTo { get; set; }
+    [JsonPropertyName("quarantine_name")] public string? QuarantineName { get; set; }
+}
+
 public class GlobalAVStats
 {
     [JsonPropertyName("total_scans")] public int TotalScans { get; set; }

@@ -1454,6 +1454,18 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
 
+    private void RemoveQuarantineEntryLocally(AVQuarantineEntry entry)
+    {
+        if (!AvQuarantine.Contains(entry))
+        {
+            return;
+        }
+
+        AvQuarantine.Remove(entry);
+        QuarantineBadgeCount = AvQuarantine.Count;
+        HasQuarantineItems = AvQuarantine.Count > 0;
+    }
+
     [RelayCommand]
     private async Task RestoreQuarantineItem(AVQuarantineEntry entry)
     {
@@ -1466,16 +1478,21 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         string? destination = UseCustomRestorePath ? CustomRestorePath : null;
-        bool success = await _scannerService.RestoreQuarantineAsync(entry.QuarantineName, CurrentUserEmail, destination);
+        var response = await _scannerService.RestoreQuarantineWithDetailsAsync(entry.QuarantineName, CurrentUserEmail, destination);
         
-        if (success)
+        if (response.Success)
         {
-            StatusMessage = $"Fichier {entry.Filename} restauré avec succès.";
+            RemoveQuarantineEntryLocally(entry);
+            StatusMessage = !string.IsNullOrWhiteSpace(response.RestoredTo)
+                ? $"Fichier {entry.Filename} restauré vers {response.RestoredTo}."
+                : (!string.IsNullOrWhiteSpace(response.Message) ? response.Message : $"Fichier {entry.Filename} restauré avec succès.");
             await RefreshAVDataCommand.ExecuteAsync(null);
         }
         else
         {
-            StatusMessage = $"Échec de la restauration de {entry.Filename}.";
+            StatusMessage = !string.IsNullOrWhiteSpace(response.Detail)
+                ? $"Échec de la restauration de {entry.Filename}: {response.Detail}"
+                : (!string.IsNullOrWhiteSpace(response.Message) ? response.Message : $"Échec de la restauration de {entry.Filename}.");
         }
     }
 
@@ -1490,15 +1507,20 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        bool success = await _scannerService.DeleteQuarantineAsync(entry.QuarantineName, CurrentUserEmail);
-        if (success)
+        var response = await _scannerService.DeleteQuarantineWithDetailsAsync(entry.QuarantineName, CurrentUserEmail);
+        if (response.Success)
         {
-            StatusMessage = $"Fichier {entry.Filename} supprimé définitivement.";
+            RemoveQuarantineEntryLocally(entry);
+            StatusMessage = !string.IsNullOrWhiteSpace(response.Message)
+                ? response.Message
+                : $"Fichier {entry.Filename} supprimé définitivement.";
             await RefreshAVDataCommand.ExecuteAsync(null);
         }
         else
         {
-            StatusMessage = $"Échec de la suppression de {entry.Filename}.";
+            StatusMessage = !string.IsNullOrWhiteSpace(response.Detail)
+                ? $"Échec de la suppression de {entry.Filename}: {response.Detail}"
+                : (!string.IsNullOrWhiteSpace(response.Message) ? response.Message : $"Échec de la suppression de {entry.Filename}.");
         }
     }
 
