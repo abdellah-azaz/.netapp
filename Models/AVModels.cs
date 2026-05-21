@@ -35,6 +35,55 @@ public class AVScanReport
     [JsonPropertyName("files")] public List<AVFileReport> Files { get; set; } = new();
 }
 
+public class AVScanDiagnostics
+{
+    [JsonPropertyName("task_id")] public string? TaskId { get; set; }
+    [JsonPropertyName("started_at")] public string? StartedAt { get; set; }
+    [JsonPropertyName("completed_at")] public string? CompletedAt { get; set; }
+    [JsonPropertyName("duration_seconds")] public double DurationSeconds { get; set; }
+    [JsonPropertyName("timeout_seconds")] public int TimeoutSeconds { get; set; }
+    [JsonPropertyName("return_code")] public int ReturnCode { get; set; }
+    [JsonPropertyName("report_path")] public string? ReportPath { get; set; }
+    [JsonPropertyName("stdout_excerpt")] public string? StdoutExcerpt { get; set; }
+    [JsonPropertyName("stderr_excerpt")] public string? StderrExcerpt { get; set; }
+}
+
+public class AVScanExecutionResponse
+{
+    [JsonPropertyName("success")] public bool Success { get; set; }
+    [JsonPropertyName("task_id")] public string? TaskId { get; set; }
+    [JsonPropertyName("scan_id")] public string ScanId { get; set; } = string.Empty;
+    [JsonPropertyName("output")] public string? Output { get; set; }
+    [JsonPropertyName("report")] public AVScanReport? Report { get; set; }
+    [JsonPropertyName("error_log")] public string? ErrorLog { get; set; }
+    [JsonPropertyName("diagnostics")] public AVScanDiagnostics? Diagnostics { get; set; }
+}
+
+public class AVScanTaskStartResponse
+{
+    [JsonPropertyName("success")] public bool Success { get; set; }
+    [JsonPropertyName("task_id")] public string TaskId { get; set; } = string.Empty;
+    [JsonPropertyName("status")] public string Status { get; set; } = string.Empty;
+    [JsonPropertyName("queued_at")] public string? QueuedAt { get; set; }
+    [JsonPropertyName("poll_url")] public string? PollUrl { get; set; }
+    [JsonPropertyName("log_file")] public string? LogFile { get; set; }
+}
+
+public class AVScanTaskStatusResponse
+{
+    [JsonPropertyName("task_id")] public string TaskId { get; set; } = string.Empty;
+    [JsonPropertyName("status")] public string Status { get; set; } = string.Empty;
+    [JsonPropertyName("path")] public string Path { get; set; } = string.Empty;
+    [JsonPropertyName("owner_email")] public string OwnerEmail { get; set; } = string.Empty;
+    [JsonPropertyName("queued_at")] public string? QueuedAt { get; set; }
+    [JsonPropertyName("started_at")] public string? StartedAt { get; set; }
+    [JsonPropertyName("finished_at")] public string? FinishedAt { get; set; }
+    [JsonPropertyName("result")] public AVScanExecutionResponse? Result { get; set; }
+    [JsonPropertyName("diagnostics")] public AVScanDiagnostics? Diagnostics { get; set; }
+    [JsonPropertyName("error")] public string? Error { get; set; }
+    [JsonPropertyName("log_messages")] public List<string> LogMessages { get; set; } = new();
+}
+
 public class AVHistoryEntry
 {
     [JsonPropertyName("id")] public int Id { get; set; }

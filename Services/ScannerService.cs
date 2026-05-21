@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Collections.Generic;
 using MonAppMultiplateforme.Models;
 
@@ -12,10 +13,12 @@ public class ScannerService
 {
     private readonly HttpClient _httpClient;
     private readonly string _baseUrl;
+    private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
     public ScannerService(string baseUrl = "http://127.0.0.1:8000")
     {
         _httpClient = new HttpClient(new TokenInterceptorHandler());
+        _httpClient.Timeout = TimeSpan.FromMinutes(20);
         _baseUrl = baseUrl.TrimEnd('/');
     }
 
@@ -56,6 +59,50 @@ public class ScannerService
         catch (Exception ex)
         {
             return $"Erreur de connexion: {ex.Message}";
+        }
+    }
+
+    public async Task<AVScanTaskStartResponse?> StartAVScanTaskAsync(string path, string email, bool auto = false)
+    {
+        try
+        {
+            var content = new StringContent(
+                JsonSerializer.Serialize(new { path, owner_email = email, auto }),
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
+
+            var response = await _httpClient.PostAsync($"{_baseUrl}/scannerav/tasks", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<AVScanTaskStartResponse>(json, JsonOptions);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public async Task<AVScanTaskStatusResponse?> GetAVScanTaskStatusAsync(string taskId, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{_baseUrl}/scannerav/tasks/{Uri.EscapeDataString(taskId)}", cancellationToken);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            var json = await response.Content.ReadAsStringAsync(cancellationToken);
+            return JsonSerializer.Deserialize<AVScanTaskStatusResponse>(json, JsonOptions);
+        }
+        catch
+        {
+            return null;
         }
     }
 

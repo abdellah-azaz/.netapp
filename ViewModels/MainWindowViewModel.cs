@@ -1123,6 +1123,21 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
 
+    private static string BuildAVScanTaskStatusMessage(AVScanTaskStatusResponse taskStatus)
+    {
+        var lastLog = taskStatus.LogMessages.LastOrDefault();
+        return taskStatus.Status switch
+        {
+            "queued" => "Scan AV-Shield en file d'attente...",
+            "running" when !string.IsNullOrWhiteSpace(lastLog) => $"Scan AV-Shield en cours... {lastLog}",
+            "running" => "Scan AV-Shield en cours...",
+            "completed" => "Scan AV-Shield terminé. Rapport reçu.",
+            "timeout" => taskStatus.Error ?? "Le scan a dépassé le délai autorisé.",
+            "failed" => taskStatus.Error ?? "Le scan a échoué.",
+            _ => $"État du scan: {taskStatus.Status}"
+        };
+    }
+
     [RelayCommand]
     private async Task RunAVScan()
     {
@@ -1133,49 +1148,61 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         IsAVScanning = true;
-        StatusMessage = "Scan AV-Shield en cours...";
-        
-        var resultJson = await _scannerService.RunAVScanAsync(ScanTargetPath, CurrentUserEmail);
-        
-        if (resultJson != null && !resultJson.StartsWith("Erreur"))
+        StatusMessage = "Initialisation du scan AV-Shield...";
+
+        var taskStart = await _scannerService.StartAVScanTaskAsync(ScanTargetPath, CurrentUserEmail);
+        if (taskStart == null || string.IsNullOrWhiteSpace(taskStart.TaskId))
         {
-            try 
+            StatusMessage = "Impossible de démarrer le scan en arrière-plan.";
+            IsAVScanning = false;
+            return;
+        }
+
+        try
+        {
+            while (true)
             {
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var root = JsonDocument.Parse(resultJson);
-                if (root.RootElement.TryGetProperty("report", out var reportElem) && reportElem.ValueKind != JsonValueKind.Null)
+                var taskStatus = await _scannerService.GetAVScanTaskStatusAsync(taskStart.TaskId);
+                if (taskStatus == null)
                 {
-                    var reportJson = reportElem.GetRawText();
-                    Console.WriteLine($"DEBUG: Received Report JSON: {reportJson}");
-                    
-                    LastAVScanResult = JsonSerializer.Deserialize<AVScanReport>(reportJson, options);
-                    
+                    StatusMessage = "Le suivi du scan a échoué avant la récupération du rapport.";
+                    break;
+                }
+
+                StatusMessage = BuildAVScanTaskStatusMessage(taskStatus);
+
+                if (taskStatus.Status == "completed")
+                {
+                    LastAVScanResult = taskStatus.Result?.Report;
                     if (LastAVScanResult != null)
                     {
-                        Console.WriteLine($"DEBUG: Deserialized Report - Malwares: {LastAVScanResult.Statistics.MalwareFiles}, Files Count: {LastAVScanResult.Files?.Count}");
-                        StatusMessage = $"Scan terminé. Menaces : {LastAVScanResult.Statistics.MalwareFiles}";
+                        var duration = taskStatus.Result?.Diagnostics?.DurationSeconds ?? taskStatus.Diagnostics?.DurationSeconds;
+                        StatusMessage = duration > 0
+                            ? $"Scan terminé en {duration:0.##} s. Menaces : {LastAVScanResult.Statistics.MalwareFiles}"
+                            : $"Scan terminé. Menaces : {LastAVScanResult.Statistics.MalwareFiles}";
+                        await RefreshAVDataCommand.ExecuteAsync(null);
                     }
                     else
                     {
-                        StatusMessage = "Erreur : Échec de la désérialisation du rapport.";
+                        StatusMessage = "Le scan est terminé mais aucun rapport n'a été renvoyé.";
                     }
-                    await RefreshAVDataCommand.ExecuteAsync(null);
+                    break;
                 }
-                else
+
+                if (taskStatus.Status == "failed" || taskStatus.Status == "timeout")
                 {
-                    StatusMessage = "Attention : Aucun rapport généré (le fichier n'existe peut-être plus).";
-                    Console.WriteLine("DEBUG: No report found in response or report is null.");
+                    StatusMessage = taskStatus.Error ?? "Le scan a échoué.";
+                    break;
                 }
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = $"Erreur de parsing : {ex.Message}";
+
+                await Task.Delay(TimeSpan.FromSeconds(2));
             }
         }
-        else
+        catch (Exception ex)
         {
-            StatusMessage = resultJson ?? "Le scan a échoué.";
+            StatusMessage = $"Erreur pendant le suivi du scan : {ex.Message}";
         }
+
         IsAVScanning = false;
     }
 
