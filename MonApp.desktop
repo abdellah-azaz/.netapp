@@ -1,0 +1,11 @@
+```ini
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mon Application Crypton
+Comment=Lanceur pour .NET et FastAPI
+Exec=/home/abdellah/.gemini/antigravity/scratch/start_app.sh
+Icon=/home/abdellah/.gemini/antigravity/scratch/MonAppMultiplateforme/Assets/logo.png
+Terminal=false
+Categories=Utility;Development;
+```

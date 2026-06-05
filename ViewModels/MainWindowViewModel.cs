@@ -1030,7 +1030,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         bool success = await _scannerService.DownloadReportAsync(scanId, destPath);
         if (success)
-            StatusMessage = $"Rapport téléchargé dans : {destPath}";
+            StatusMessage = $"Rapport '{scanId}' : downloaded successfully.";
         else
             StatusMessage = "Échec du téléchargement du rapport.";
     }
@@ -1144,6 +1144,12 @@ public partial class MainWindowViewModel : ViewModelBase
         if (string.IsNullOrWhiteSpace(ScanTargetPath))
         {
             StatusMessage = "Veuillez entrer un chemin à scanner.";
+            return;
+        }
+
+        if (!Directory.Exists(ScanTargetPath) && !File.Exists(ScanTargetPath))
+        {
+            StatusMessage = "Fichier introuvable";
             return;
         }
 
@@ -1578,6 +1584,26 @@ public partial class MainWindowViewModel : ViewModelBase
             else
             {
                 StatusMessage = "Échec du nettoyage de l'historique.";
+            }
+        }
+    }
+
+    [RelayCommand]
+    private async Task ClearBootHistory()
+    {
+        bool confirm = true;
+        if (confirm)
+        {
+            StatusMessage = "Nettoyage de l'historique de boot...";
+            bool success = await _scannerService.CleanupBootHistoryAsync();
+            if (success)
+            {
+                StatusMessage = "Historique de boot vidé.";
+                await LoadBootHistory();
+            }
+            else
+            {
+                StatusMessage = "Échec du nettoyage de l'historique de boot.";
             }
         }
     }

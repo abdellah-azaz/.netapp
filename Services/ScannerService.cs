@@ -218,6 +218,16 @@ public class ScannerService
         catch { return null; }
     }
 
+    public async Task<bool> CleanupBootHistoryAsync()
+    {
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"{_baseUrl}/api/boot/history");
+            return response.IsSuccessStatusCode;
+        }
+        catch { return false; }
+    }
+
     public async Task<bool> DownloadReportAsync(string scanId, string destPath)
     {
         try
